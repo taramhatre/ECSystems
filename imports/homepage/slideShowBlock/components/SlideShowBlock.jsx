@@ -17,15 +17,15 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					  </ol>
 					  <div className="carousel-inner">
 					    <div className="item active">
-					      sdfsd
+					      <img src="/img/banner.png" className="col-lg-12 bannerimg"/>
 					    </div>
 
 					    <div className="item">
-					      Ksdfsd
+					      <img src="/img/slide3.jpg" className="col-lg-12 bannerimg"/>
 					    </div>
 
 					    <div className="item">
-					      sdfsd
+					      <img src="/img/banner1.png" className="col-lg-12 bannerimg"/>
 					    </div>
 					  </div>
 					  <a className="left carousel-control" href="#myCarousel" data-slide="prev">
