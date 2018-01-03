@@ -9,7 +9,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 		return(
 				<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 ecEleHomeWrap">
 					<Header/>
-					<div id="myCarousel" className="carousel slide" data-ride="carousel">
+					<div id="myCarousel" className="carousel slide ECSlideShow" data-ride="carousel">
 					  <ol className="carousel-indicators">
 					    <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
 					    <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -17,15 +17,15 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					  </ol>
 					  <div className="carousel-inner">
 					    <div className="item active">
-					      Vikas
+					      sdfsd
 					    </div>
 
 					    <div className="item">
-					      Pilluuu
+					      Ksdfsd
 					    </div>
 
 					    <div className="item">
-					      Akash
+					      sdfsd
 					    </div>
 					  </div>
 					  <a className="left carousel-control" href="#myCarousel" data-slide="prev">

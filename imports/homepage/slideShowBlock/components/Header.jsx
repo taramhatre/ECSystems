@@ -6,7 +6,7 @@ import {PropTypes} from 'prop-types';
 export default class Header extends TrackerReact(Component){
 	render(){
 		return(
-			<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 homeMenuWrap">
 				<nav className="navbar navbar-inverse">
 				  <div className="container-fluid">
 				    <div className="navbar-header">
