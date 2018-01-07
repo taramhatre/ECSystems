@@ -21,6 +21,7 @@ Meteor.methods({
 								          "categoryImg"  : formvalues.categoryImg,
 								          "createdAt"    : new Date(),
 							          }); 	
+    return categoryId;
   },
 
   'deleteCategory' : function(dltId) {
