@@ -18,15 +18,15 @@ export default class Header extends TrackerReact(Component){
 				      <a className="navbar-brand" href="#">EC-Systems</a>
 				    </div>
 				    <div className="collapse navbar-collapse" id="myNavbar">
-				      <ul className="nav navbar-nav">
-				        <li className="active"><a href="#">HOME</a></li>
-				        <li><a href="#">SUPPLY</a></li>
-				        <li><a href="#">SERVICES</a></li> 
-				        <li><a href="#">CONTACT</a></li> 
+				      <ul className="nav navbar-nav EC-navbar-nav col-lg-8 col-md-8">
+				        <li className="active1"><a href="/">HOME</a></li>
+				        <li><a href="/supply">SUPPLY</a></li>
+				        <li><a href="/services">SERVICES</a></li> 
+				        <li><a href="/contact">CONTACT</a></li> 
 				      </ul>
 				      <ul className="nav navbar-nav navbar-right">
-				        <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				        <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+				       {/*} <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				        <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>*/}
 				      </ul>
 				    </div>
 				  </div>

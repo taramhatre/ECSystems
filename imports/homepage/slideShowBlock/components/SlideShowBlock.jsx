@@ -4,6 +4,7 @@ import {createContainer} from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {PropTypes} from 'prop-types';
 import Header from '/imports/homepage/slideShowBlock/components/Header.jsx';
+import CategoryPage from '/imports/homepage/categoryBlock/components/CategoryPage.jsx';
 export default class SlideShowBlock extends TrackerReact(Component){
 	render(){
 		return(
@@ -17,15 +18,30 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					  </ol>
 					  <div className="carousel-inner">
 					    <div className="item active">
-					      <img src="/img/banner.png" className="col-lg-12 bannerimg"/>
+					      <img src="/img/slide3.jpg" className="col-lg-12 col-sm-12 col-md-12 col-xs-12 bannerimg"/>
+					      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sliderTitles">
+						      <div><h1> Latest Computer At Your Doorstep</h1></div>
+						      <div><h4> Just in 2 hours or It's FREE</h4></div>
+						      <div><h4> <b>Call Now </b></h4></div>
+					      </div>
 					    </div>
 
 					    <div className="item">
-					      <img src="/img/slide3.jpg" className="col-lg-12 bannerimg"/>
+					      <img src="/img/slide3.jpg" className="col-lg-12 col-sm-12 col-md-12 col-xs-12 bannerimg"/>
+					      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sliderTitles">
+						      <div><h1> Latest Computer At Your Doorstep</h1></div>
+						      <div><h4> Just in 2 hours or It's FREE</h4></div>
+						      <div><h4> <b>Call Now </b></h4></div>
+					      </div>
 					    </div>
 
 					    <div className="item">
-					      <img src="/img/banner1.png" className="col-lg-12 bannerimg"/>
+					      <img src="/img/slide3.jpg" className="col-lg-12 col-sm-12 col-md-12 col-xs-12 bannerimg"/>
+					      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sliderTitles">
+						      <div><h1> Latest Computer At Your Doorstep</h1></div>
+						      <div><h4> Just in 2 hours or It's FREE</h4></div>
+						      <div><h4> <b>Call Now </b></h4></div>
+					      </div>
 					    </div>
 					  </div>
 					  <a className="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -37,6 +53,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					    <span className="sr-only">Next</span>
 					  </a>
 					</div>
+					<CategoryPage/>
 				</div>
 			);
 	}
