@@ -10,6 +10,10 @@ if(Meteor.isServer){
     return Products.find({"_id":productsId});
   });
 
+  Meteor.publish("featuredProducts", function(){
+    return Products.find({"topProduct" : true});
+  });
+
 }
 
 Meteor.methods({
@@ -48,6 +52,16 @@ Meteor.methods({
 				'discount'         : parseFloat(formvalues.discount),
 				'category'         : formvalues.category,
 	            "updatedAt"        : new Date(),
+      } //End of set
+    });  	
+  },
+
+  'featuredProduct' : function(productId, value) {
+    Products.update(
+      { '_id': productId },
+      {
+        $set:{
+				'topProduct' : value,
       } //End of set
     });  	
   },

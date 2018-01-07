@@ -9,7 +9,6 @@ export default class ProductsList extends TrackerReact(Component){
 	constructor(props) {
 	  super(props);
 		  this.state = {
-		    "categoryName" : '',
 			"subscription" : {
 				"allProducts" : Meteor.subscribe("allProducts"),
 			}
@@ -35,6 +34,19 @@ export default class ProductsList extends TrackerReact(Component){
 	    });		
 	}
 
+	  handleInputChange(event) {
+	    const productId = event.target.value;
+	    // console.log(productId);
+	    // console.log(event.target.checked);
+	    var value = event.target.checked;
+	    Meteor.call('featuredProduct', productId, value, (error,result)=>{
+	    	if(error){
+	    		console.log("client error"+error);
+	    		swal(error);
+	    	}else{
+	    	}
+	    });	
+	  }
 
 	render() {
 
@@ -57,14 +69,15 @@ export default class ProductsList extends TrackerReact(Component){
 								<thead>
 									<tr className="tableHeader">
 										<th> Sr. </th>
-										<th> Product Name </th>
+										<th> Product<br/> Name </th>
 										<th> Brand </th>
-										<th> Short Description </th>
-										<th> Material & Care </th>
+										<th> Short<br/> Description </th>
+										<th> Material <br/>& Care </th>
 										<th> Description </th>
 										<th> Price </th>
 										<th> Discount </th>
 										<th> Category </th>
+										<th> Featured <br/>Products </th>
 										<th> Action </th>
 									</tr>
 								</thead>
@@ -80,6 +93,7 @@ export default class ProductsList extends TrackerReact(Component){
 													<td>{productInfo.price}</td>
 													<td>{productInfo.discount}</td>
 													<td>{productInfo.category}</td>
+													<td><input type="checkbox" name="featured" value={productInfo._id} onChange={this.handleInputChange.bind(this)} checked={productInfo.topProduct}/></td>
 													<td>
 														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addProduct-'+index}></i>
 														<a href={"/addNewProducts/"+productInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
