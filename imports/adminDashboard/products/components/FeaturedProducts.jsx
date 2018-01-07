@@ -29,7 +29,7 @@ export default class FeaturedProducts extends TrackerReact(Component){
 
 					<div className="box box-primary">
 			            <div className="box-header with-border">
-			            <h4 className="contentTitle">Featured Products List</h4>
+			            <h4 className="contentTitle">Featured Products</h4>
 			            </div>
 					
 						<div className="box-body">

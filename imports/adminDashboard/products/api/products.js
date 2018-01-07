@@ -66,4 +66,40 @@ Meteor.methods({
     });  	
   },
 
+  'BulkProductsCSVUpload': function(data){
+
+    console.log(data.length);
+    check( data, Array);
+
+    for ( var i = 0; i < data.length; i++ ){
+      var uploadProduct    = data[i];
+      var productName      = uploadProduct.productName;
+      var brand            = uploadProduct.brand;
+      var shortDescription = uploadProduct.shortDescription;
+      var materialCare     = uploadProduct.materialCare;
+      var description      = uploadProduct.description;
+      var price            = uploadProduct.price;
+      var discount         = uploadProduct.discount;
+      var category         = uploadProduct.category;
+
+      // console.log(Make,Model,Year);
+      
+      UserSession.set("allProgressbarSession",Meteor.userId()) ; 
+      var productsId = Products.insert({ 
+              'productName'      : productName,
+              'brand'            : brand,
+              'shortDescription' : shortDescription,                
+              'materialCare'     : materialCare,                 
+              'description'      : description,                 
+              'price'            : price,                 
+              'discount'         : discount,                 
+              'category'         : category,                 
+              'topProduct'       : false,  
+              "createdAt"        : new Date(),               
+        });
+      UserSession.set("progressbarSession",Meteor.userId());
+
+    }//end of for
+  },
+
 });
