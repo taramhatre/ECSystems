@@ -6,6 +6,10 @@ if(Meteor.isServer){
     return Categories.find({});
   });
 
+  Meteor.publish("findCategory", function(categoryId){
+    return Categories.find({"_id":categoryId});
+  });
+
 }
 
 
@@ -17,6 +21,22 @@ Meteor.methods({
 								          "categoryImg"  : formvalues.categoryImg,
 								          "createdAt"    : new Date(),
 							          }); 	
+  },
+
+  'deleteCategory' : function(dltId) {
+	Categories.remove({"_id" : dltId}); 	
+  },
+
+  'updateCategory' : function(formvalues) {
+    Categories.update(
+      { '_id': formvalues.categoryId },
+      {
+        $set:{
+	          "categoryName" : formvalues.categoryName,
+	          "categoryImg"  : formvalues.categoryImg,
+	          "updatedAt"    : new Date(),
+      } //End of set
+    });  	
   },
 
 });

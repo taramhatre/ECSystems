@@ -6,3 +6,8 @@
 .categoryTable{
     margin-top: 2%;
 }
+
+.dltCategory{
+	color: red;
+	cursor: pointer;
+}

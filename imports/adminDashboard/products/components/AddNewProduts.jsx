@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { render } from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-
+import { Categories } from '../../category/api/category.js';
 
 class AddNewProduts extends TrackerReact(Component){
 
@@ -10,7 +10,7 @@ class AddNewProduts extends TrackerReact(Component){
 	  super(props);
 
 		  this.state = {
-		    // description          : '',
+		    "allCategories" : Meteor.subscribe("allCategories"),
 
 		  };	   	
 		    this.handleInputChange = this.handleInputChange.bind(this);
@@ -30,8 +30,6 @@ class AddNewProduts extends TrackerReact(Component){
     	this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    componentDidMount(){
-	}
 
 	  handleInputChange(event) {
 	    const target = event.target;
@@ -50,20 +48,8 @@ class AddNewProduts extends TrackerReact(Component){
 
 	}
 
-	addImgsToGardenSpace(e){
-
-	    e.preventDefault();
-	    let self = this;
-	    Session.set('s3ImgObj','GardenSpaceImg');
-	    if (e.currentTarget.files && e.currentTarget.files[0]) {
-	      // We upload only one file, in case
-	      // there was multiple files selected
-	      var file = e.currentTarget.files[0];
-
-	      if (file) {
-	      	addImgsToS3Function(file,self);
-	      }
-	    }
+	allCategories(){
+		return Categories.find({}).fetch()
 	}
 
 
@@ -197,13 +183,20 @@ class AddNewProduts extends TrackerReact(Component){
 									<div className="col-lg-4 col-sm-12 col-xs-12 col-md-12">
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Category</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
-									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="number" ref="loginusername" name="loginusername"/>
-						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
-								              <span className="focusBorder">
-								            	<i></i>
-								              </span>
-									    </div>
+										 { this.allCategories().length != 0 ?
+										    <select className="form-control">
+										    <option value="">--Select Category--</option>
+										    { this.allCategories().map( (categoryInfo,index)=>{
+											  return (<option  key={index} value={categoryInfo.categoryName}>{categoryInfo.categoryName}</option>);
+											  }) 
+											}
+											</select>
+
+											:
+
+											<a href="/addNewProductCategory">Add categories</a>
+
+										}
 										</div>
 									</div>
 

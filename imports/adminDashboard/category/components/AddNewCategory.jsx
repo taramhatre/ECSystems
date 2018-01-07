@@ -9,9 +9,8 @@ class AddNewCategory extends TrackerReact(Component){
 
 	constructor(props) {
 	  super(props);
-
 		  this.state = {
-		    // description          : '',
+		    "categoryName" : '',
 			"subscription" : {
 				"allCategories" : Meteor.subscribe("allCategories"),
 			}
@@ -25,7 +24,7 @@ class AddNewCategory extends TrackerReact(Component){
 			if(nextProps.post){
 
 		            this.setState({
-		          		// description          : nextProps.post.gardenSpaceDetails.description,
+		          		categoryName : nextProps.post.categoryName,
 		            })
 
 		            
@@ -53,22 +52,51 @@ class AddNewCategory extends TrackerReact(Component){
 
 	updateCategoryInfo(event){
 		event.preventDefault();
-
+		var categoryId      = FlowRouter.getParam("categoryId");
 		var formvalues = {
 							'categoryName' : this.refs.categoryName.value,
 							// 'categoryImg'  : this.refs.categoryImg.value,
 							'categoryImg'  : "../images/mouse.jpeg",
+							'categoryId'   : categoryId,
 						}
-		
-	    Meteor.call('addNewCategory', formvalues, (error,result)=>{
+
+		if(categoryId){
+		    Meteor.call('updateCategory', formvalues, (error,result)=>{
+		    	if(error){
+		    		console.log("client error"+error);
+		    		swal(error);
+		    	}else{
+		    		this.refs.categoryName.value = '';
+		    		FlowRouter.go('/addNewProductCategory');
+		    		swal('Category updated successfully!');
+		    	}
+		    });
+		}else{
+		    Meteor.call('addNewCategory', formvalues, (error,result)=>{
+		    	if(error){
+		    		console.log("client error"+error);
+		    		swal(error);
+		    	}else{
+		    		this.refs.categoryName.value = '';
+		    		swal('Category added successfully!');
+		    	}
+		    });			
+		}
+
+
+	}
+
+	deleteCategory(event){
+		event.preventDefault();
+		var dltId = event.target.id;
+	    Meteor.call('deleteCategory', dltId, (error,result)=>{
 	    	if(error){
 	    		console.log("client error"+error);
 	    		swal(error);
 	    	}else{
-	    		swal('Category added successfully!');
+	    		swal('Category deleted successfully!');
 	    	}
-	    });
-
+	    });		
 	}
 
 
@@ -76,6 +104,13 @@ class AddNewCategory extends TrackerReact(Component){
 
 		if(!this.props.loading){
 		if(this.props.post){
+
+	  	  var categoryId = FlowRouter.getParam("categoryId");
+	  	  if(categoryId){
+	  	  	var categoryId = 'UPDATE';
+	  	  }else{
+	  	  	var categoryId = 'SAVE';
+	  	  }
 
 	       return (
 	       <section className="Content">
@@ -100,8 +135,8 @@ class AddNewCategory extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Category Name</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="categoryName" name="categoryName"/>
-						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
+								        	<input className="effectAddress UMname form-control" value={this.state.categoryName} onChange={this.handleInputChange.bind(this)} type="text" ref="categoryName" name="categoryName"/>
+						                      <span className="input-group-addon addons"><i className="fa fa-object-group"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
 								              </span>
@@ -114,7 +149,7 @@ class AddNewCategory extends TrackerReact(Component){
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
 								        	<input className="effectAddress UMname form-control" type="text" ref="categoryImg" name="categoryImg"/>
-						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
+						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
 								              </span>
@@ -124,7 +159,7 @@ class AddNewCategory extends TrackerReact(Component){
 
 
 								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<input type="submit" className="btn btn-update-pro1 col-lg-3 col-md-3 col-sm-12 col-xs-12 btn-Btn1 pull-right" value="UPDATE"/>
+									<input type="submit" className="btn btn-primary col-lg-4 col-lg-offset-4 col-md-3 col-sm-12 col-xs-12 btn-Btn1" value={categoryId}/>
 								</div>
 							</form>
 							</div>
@@ -147,8 +182,27 @@ class AddNewCategory extends TrackerReact(Component){
 													<td>{categoryInfo.categoryName}</td>
 													<td><img src={categoryInfo.categoryImg} className="img-responsive"/></td>
 													<td>
-														<i className="fa fa-trash col-lg-1" aria-hidden="true"></i>
-														<i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i>
+														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addCategory-'+index}></i>
+														<a href={"/addNewProductCategory/"+categoryInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
+
+														<div id={'addCategory-'+index} className="modal fade" role="dialog">
+														  <div className="modal-dialog">
+														    <div className="modal-content">
+														      <div className="modal-header">
+														        <button type="button" className="close" data-dismiss="modal">&times;</button>
+														        <h4 className="modal-title">Delete Category</h4>
+														      </div>
+														      <div className="modal-body">
+														        <p>Do you want to delete category '{categoryInfo.categoryName}'?</p>
+														      </div>
+														      <div className="modal-footer">
+														        <button type="button" id={categoryInfo._id} onClick={this.deleteCategory.bind(this)} className="btn btn-danger pull-left" data-dismiss="modal">Delete</button>
+														        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+
 													</td>
 											   </tr>
 									  }) 
@@ -185,14 +239,13 @@ export default AddNewCategoryContainer  = withTracker(props => {
   // Do all your reactive data access in this method.
   // Note that this subscription will get cleaned up when your component is unmounted
 
-    // var spaceid      = FlowRouter.getParam("spaceid");
-    // const postHandle = Meteor.subscribe('ownerSpaceDetail',spaceid);
-    // const post       = SpaceDetails.findOne({'_id':spaceid})||{};
-    // const loading    = !postHandle.ready();
+    var categoryId      = FlowRouter.getParam("categoryId");
+    // console.log('categoryId: '+categoryId);
 
-    const post = {};
-    const loading = false;
-
+    const postHandle    = Meteor.subscribe('findCategory',categoryId);
+    const post          = Categories.findOne({'_id':categoryId})||{};
+          loading       = !postHandle.ready();   	
+     // console.log('post: ',post);
     return {
         loading,
         post,
