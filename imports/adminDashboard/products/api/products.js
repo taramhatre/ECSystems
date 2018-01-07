@@ -34,4 +34,22 @@ Meteor.methods({
 	Products.remove({'_id': dltId}); 				          	
   },
 
+  'updateProduct' : function(formvalues) {
+    Products.update(
+      { '_id': formvalues.productid },
+      {
+        $set:{
+				'productName'      : formvalues.productName,
+				'brand'            : formvalues.brand,
+				'shortDescription' : formvalues.shortDescription,
+				'materialCare'     : formvalues.materialCare,
+				'description'      : formvalues.description,
+				'price'            : parseFloat(formvalues.price),
+				'discount'         : parseFloat(formvalues.discount),
+				'category'         : formvalues.category,
+	            "updatedAt"        : new Date(),
+      } //End of set
+    });  	
+  },
+
 });

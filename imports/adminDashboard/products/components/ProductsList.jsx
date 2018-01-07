@@ -81,10 +81,10 @@ export default class ProductsList extends TrackerReact(Component){
 													<td>{productInfo.discount}</td>
 													<td>{productInfo.category}</td>
 													<td>
-														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addCategory-'+index}></i>
-														<a href={"/addNewProductCategory/"+productInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
+														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addProduct-'+index}></i>
+														<a href={"/addNewProducts/"+productInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
 
-														<div id={'addCategory-'+index} className="modal fade" role="dialog">
+														<div id={'addProduct-'+index} className="modal fade" role="dialog">
 														  <div className="modal-dialog">
 														    <div className="modal-content">
 														      <div className="modal-header">

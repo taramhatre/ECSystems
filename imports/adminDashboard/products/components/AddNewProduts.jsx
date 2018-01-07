@@ -3,6 +3,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { render } from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Categories } from '../../category/api/category.js';
+import { Products } from '../api/products.js';
 
 class AddNewProduts extends TrackerReact(Component){
 
@@ -10,8 +11,17 @@ class AddNewProduts extends TrackerReact(Component){
 	  super(props);
 
 		  this.state = {
-		    "allCategories" : Meteor.subscribe("allCategories"),
-
+		  	"productName"       : '',
+		  	"brand"             : '',
+		  	"shortDescription"  : '',
+		  	"materialCare"      : '',
+		  	"description"       : '',
+		  	"price"             : '',
+		  	"discount"          : '',
+		  	"category"          : '',
+			"subscription" : {
+				"allCategories" : Meteor.subscribe("allCategories"),
+			}
 		  };	   	
 		    this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -21,7 +31,14 @@ class AddNewProduts extends TrackerReact(Component){
 			if(nextProps.post){
 
 		            this.setState({
-		          		// description          : nextProps.post.gardenSpaceDetails.description,
+		          				  	"productName"       : nextProps.post.productName,
+								  	"brand"             : nextProps.post.brand,
+								  	"shortDescription"  : nextProps.post.shortDescription,
+								  	"materialCare"      : nextProps.post.materialCare,
+								  	"description"       : nextProps.post.description,
+								  	"price"             : nextProps.post.price,
+								  	"discount"          : nextProps.post.discount,
+								  	"category"          : nextProps.post.category,
 		            })
 
 		            
@@ -44,6 +61,7 @@ class AddNewProduts extends TrackerReact(Component){
 
 	updateProductDetails(event){
 		event.preventDefault();
+		var productid      = FlowRouter.getParam("productId");
 		var formValues = {
 							'productName'      : this.refs.productName.value,
 							'brand'            : this.refs.brand.value,
@@ -53,25 +71,47 @@ class AddNewProduts extends TrackerReact(Component){
 							'price'            : this.refs.price.value,
 							'discount'         : this.refs.discount.value,
 							'category'         : this.refs.category.value,
+							'productid'        : productid,
 						}
 
-		console.log('formValues: ',formValues);
-	    Meteor.call('addNewProduct', formValues, (error,result)=>{
-	    	if(error){
-	    		console.log("client error"+error);
-	    		swal(error);
-	    	}else{
-				this.refs.productName.value = '';
-				this.refs.brand.value = '';
-				this.refs.shortDescription.value = '';
-				this.refs.materialCare.value = '';
-				this.refs.description.value = '';
-				this.refs.price.value = '';
-				this.refs.discount.value = '';
-				this.refs.category.value = '';
-	    		swal('Product added successfully!');
-	    	}
-	    });	
+		// console.log('formValues: ',formValues);
+		if(productid){
+		    Meteor.call('updateProduct', formValues, (error,result)=>{
+		    	if(error){
+		    		console.log("client error"+error);
+		    		swal(error);
+		    	}else{
+					this.refs.productName.value = '';
+					this.refs.brand.value = '';
+					this.refs.shortDescription.value = '';
+					this.refs.materialCare.value = '';
+					this.refs.description.value = '';
+					this.refs.price.value = '';
+					this.refs.discount.value = '';
+					this.refs.category.value = '';
+					FlowRouter.go('/viewAllProducts');
+		    		swal('Product updated successfully!');
+		    	}
+		    });
+		}else{
+		    Meteor.call('addNewProduct', formValues, (error,result)=>{
+		    	if(error){
+		    		console.log("client error"+error);
+		    		swal(error);
+		    	}else{
+					this.refs.productName.value = '';
+					this.refs.brand.value = '';
+					this.refs.shortDescription.value = '';
+					this.refs.materialCare.value = '';
+					this.refs.description.value = '';
+					this.refs.price.value = '';
+					this.refs.discount.value = '';
+					this.refs.category.value = '';
+		    		swal('Product added successfully!');
+		    	}
+		    });			
+		}
+	
 
 	}
 
@@ -107,7 +147,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Product Name</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="productName" name="productName" required/>
+								        	<input className="effectAddress UMname form-control" type="text" onChange={this.handleInputChange.bind(this)} value={this.state.productName} ref="productName" name="productName" required/>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -120,7 +160,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Brand</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="brand" name="brand" required/>
+								        	<input className="effectAddress UMname form-control" type="text" onChange={this.handleInputChange.bind(this)} value={this.state.brand} ref="brand" name="brand" required/>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -134,7 +174,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Short Description</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<textarea className="effectAddress UMname form-control" type="text" rows="5" ref="shortDescription" name="shortDescription" required></textarea>
+								        	<textarea className="effectAddress UMname form-control" type="text" rows="5" onChange={this.handleInputChange.bind(this)} value={this.state.shortDescription} ref="shortDescription" name="shortDescription" required></textarea>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -147,7 +187,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Material & Care</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<textarea className="effectAddress UMname form-control" type="text" rows="5" ref="materialCare" name="materialCare" required></textarea>
+								        	<textarea className="effectAddress UMname form-control" type="text" rows="5" onChange={this.handleInputChange.bind(this)} value={this.state.materialCare} ref="materialCare" name="materialCare" required></textarea>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -160,7 +200,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Description</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<textarea className="effectAddress UMname form-control" rows="5" type="text" ref="description" name="description" required></textarea>
+								        	<textarea className="effectAddress UMname form-control" rows="5" type="text" onChange={this.handleInputChange.bind(this)} value={this.state.description} ref="description" name="description" required></textarea>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -174,7 +214,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Price</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="number" step="0.01" ref="price" name="price" required/>
+								        	<input className="effectAddress UMname form-control" type="number" step="0.01" onChange={this.handleInputChange.bind(this)} value={this.state.price} ref="price" name="price" required/>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -187,7 +227,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Discount</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="number" step="0.01" ref="discount" name="discount" required/>
+								        	<input className="effectAddress UMname form-control" type="number" step="0.01" onChange={this.handleInputChange.bind(this)} value={this.state.discount} ref="discount" name="discount" required/>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -200,7 +240,7 @@ class AddNewProduts extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Category</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 										 { this.allCategories().length != 0 ?
-										    <select className="form-control" ref="category" name="category" required>
+										    <select className="form-control" ref="category" name="category" onChange={this.handleInputChange.bind(this)} value={this.state.category} required>
 										    <option value="">--Select Category--</option>
 										    { this.allCategories().map( (categoryInfo,index)=>{
 											  return (<option  key={index} value={categoryInfo.categoryName}>{categoryInfo.categoryName}</option>);
@@ -249,13 +289,10 @@ export default AddNewProdutsContainer  = withTracker(props => {
   // Do all your reactive data access in this method.
   // Note that this subscription will get cleaned up when your component is unmounted
 
-    // var spaceid      = FlowRouter.getParam("spaceid");
-    // const postHandle = Meteor.subscribe('ownerSpaceDetail',spaceid);
-    // const post       = SpaceDetails.findOne({'_id':spaceid})||{};
-    // const loading    = !postHandle.ready();
-
-    const post = {};
-    const loading = false;
+    var productid      = FlowRouter.getParam("productId");
+    const postHandle   = Meteor.subscribe('findProducts',productid);
+    const post         = Products.findOne({'_id':productid})||{};
+    const loading      = !postHandle.ready();
 
     return {
         loading,
