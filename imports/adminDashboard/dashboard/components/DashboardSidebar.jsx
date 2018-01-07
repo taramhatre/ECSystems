@@ -34,36 +34,36 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					          </a>
 					        </li>
 	
-					        <li class="treeview">
+					        <li className="treeview">
 					          <a href="#">
-					            <i class="fa fa-product-hunt" aria-hidden="true"></i>
+					            <i className="fa fa-product-hunt" aria-hidden="true"></i>
 					            <span>Products</span>
-					            <span class="pull-right-container">
-					              <i class="fa fa-angle-left pull-right"></i>
+					            <span className="pull-right-container">
+					              <i className="fa fa-angle-left pull-right"></i>
 					            </span>
 					          </a>
-					          <ul class="treeview-menu">
-					            <li><a href="/featuredexclusivetab"><i class="fa fa-circle-o"></i> Exclusive/Featured </a></li>
-					            <li><a href="/categoryReqInfo"><i class="fa fa-circle-o"></i> All Categories</a></li>
-					            <li><a href="/viewAllProducts"><i class="fa fa-circle-o"></i> Product List</a></li>
-					            <li><a href="/newProductsInfo"><i class="fa fa-circle-o"></i>Add New Product</a></li>
-					            <li><a href="/updatebulkProductDetails"><i class="fa fa-circle-o"></i>Update Bulk Product Details</a></li>
-					            <li><a href="/productsCategory"><i class="fa fa-circle-o"></i>Add New Category</a></li>
+					          <ul className="treeview-menu">
+					            <li><a href="/featuredexclusivetab"><i className="fa fa-circle-o"></i> Exclusive/Featured </a></li>
+					            <li><a href="/categoryReqInfo"><i className="fa fa-circle-o"></i> All Categories</a></li>
+					            <li><a href="/viewAllProducts"><i className="fa fa-circle-o"></i> Product List</a></li>
+					            <li><a href="/addNewProducts"><i className="fa fa-circle-o"></i>Add New Product</a></li>
+					            <li><a href="/updatebulkProductDetails"><i className="fa fa-circle-o"></i>Update Bulk Product Details</a></li>
+					            <li><a href="/addNewProductCategory"><i className="fa fa-circle-o"></i>Add New Category</a></li>
 					            
 					          </ul>
 					        </li>
 
-					        <li class="treeview">
+					        <li className="treeview">
 					          <a href="#">
-					            <i class="fa fa-product-hunt" aria-hidden="true"></i>
+					            <i className="fa fa-product-hunt" aria-hidden="true"></i>
 					            <span>Services</span>
-					            <span class="pull-right-container">
-					              <i class="fa fa-angle-left pull-right"></i>
+					            <span className="pull-right-container">
+					              <i className="fa fa-angle-left pull-right"></i>
 					            </span>
 					          </a>
-					          <ul class="treeview-menu">
-					            <li><a href="/viewAllProducts"><i class="fa fa-circle-o"></i> Services List</a></li>
-					            <li><a href="/newProductsInfo"><i class="fa fa-circle-o"></i>Add New Service</a></li>
+					          <ul className="treeview-menu">
+					            <li><a href="/viewAllProducts"><i className="fa fa-circle-o"></i> Services List</a></li>
+					            <li><a href="/newProductsInfo"><i className="fa fa-circle-o"></i>Add New Service</a></li>
 					            
 					          </ul>
 					        </li>
