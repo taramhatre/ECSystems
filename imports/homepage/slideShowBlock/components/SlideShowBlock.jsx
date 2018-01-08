@@ -5,6 +5,10 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {PropTypes} from 'prop-types';
 import Header from '/imports/homepage/slideShowBlock/components/Header.jsx';
 import CategoryPage from '/imports/homepage/categoryBlock/components/CategoryPage.jsx';
+import TopProductsBlock from '/imports/homepage/topProductsBlock/components/TopProductsBlock.jsx';
+import BrandsBlock from '/imports/homepage/brandsBlock/components/BrandsBlock.jsx';
+import ServicesBlock from '/imports/homepage/servicesBlock/components/ServicesBlock.jsx';
+import ContactUsBlock from '/imports/homepage/contactUsBlock/components/ContactUsBlock.jsx';
 export default class SlideShowBlock extends TrackerReact(Component){
 	render(){
 		return(
@@ -54,6 +58,10 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					  </a>
 					</div>
 					<CategoryPage/>
+					<TopProductsBlock/>
+					<BrandsBlock/>
+					<ServicesBlock/>
+					<ContactUsBlock/>
 				</div>
 			);
 	}
