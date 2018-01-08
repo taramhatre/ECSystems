@@ -1,4 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import '/lib/vikasRoutes.jsx';
+
 import '/imports/homepage/slideShowBlock/css/slideShowBlock.css';
+import '/imports/adminDashboard/dashboard/css/dashboard.css';
+import '/imports/adminDashboard/products/css/products.css';
+import '/imports/adminDashboard/category/css/category.css';
