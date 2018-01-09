@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {createContainer} from 'meteor/react-meteor-data';
+import { withTracker } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {PropTypes} from 'prop-types';
-export default class Header extends TrackerReact(Component){
+import { Settings } from '/imports/adminDashboard/companySettings/api/companySettings.js';
+
+class Header extends TrackerReact(Component){
 	render(){
 		return(
 			<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 homeMenuWrap">
@@ -15,7 +17,7 @@ export default class Header extends TrackerReact(Component){
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span> 
 				      </button>
-				      <a className="navbar-brand" href="#">EC-Systems</a>
+				      <a className="navbar-brand" href="#">{this.props.post.companyName}</a>
 				    </div>
 				    <div className="collapse navbar-collapse" id="myNavbar">
 				      <ul className="nav navbar-nav EC-navbar-nav col-lg-8 col-md-8">
@@ -35,3 +37,17 @@ export default class Header extends TrackerReact(Component){
 			);
 	}
 }
+
+export default HeaderContainer  = withTracker(props => {
+  // Do all your reactive data access in this method.
+  // Note that this subscription will get cleaned up when your component is unmounted
+
+    const postHandle   = Meteor.subscribe('findSettings');
+    const post         = Settings.findOne({"companyId":101})||{};
+    const loading      = !postHandle.ready();
+
+    return {
+        loading,
+        post,
+    };
+})(Header);

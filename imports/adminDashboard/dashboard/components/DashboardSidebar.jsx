@@ -49,6 +49,32 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 
 					        <li className="treeview">
 					          <a href="#">
+					            <i className="fa fa-pie-chart" aria-hidden="true"></i>
+					            <span>Brands</span>
+					            <span className="pull-right-container">
+					              <i className="fa fa-angle-left pull-right"></i>
+					            </span>
+					          </a>
+					          <ul className="treeview-menu">
+					            <li><a href="/addNewBrand"><i className="fa fa-circle-o"></i>Add New Brand</a></li>  
+					          </ul>
+					        </li>
+
+					        <li className="treeview">
+					          <a href="#">
+					            <i className="fa fa-pie-chart" aria-hidden="true"></i>
+					            <span>Slideshow</span>
+					            <span className="pull-right-container">
+					              <i className="fa fa-angle-left pull-right"></i>
+					            </span>
+					          </a>
+					          <ul className="treeview-menu">
+					            <li><a href="/addNewSlide"><i className="fa fa-circle-o"></i>Add New Slide</a></li>  
+					          </ul>
+					        </li>
+
+					        <li className="treeview">
+					          <a href="#">
 					            <i className="fa fa-product-hunt" aria-hidden="true"></i>
 					            <span>Products</span>
 					            <span className="pull-right-container">

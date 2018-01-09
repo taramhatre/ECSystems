@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { render } from 'react-dom';
 import TrackeReact from 'meteor/ultimatejs:tracker-react';
-// import CategoryListPage from './CategoryListPage.jsx';
+import { Brands } from '/imports/adminDashboard/brands/api/brands.js';
 
 export default class BrandsBlock extends TrackeReact(Component){
 
@@ -9,11 +9,15 @@ export default class BrandsBlock extends TrackeReact(Component){
 		super();
 		this.state={
 			'subscription':{
-				// productData : Meteor.subscribe('allProductData'),
+				allBrands : Meteor.subscribe('allBrands'),
 			}
 		}
-
 	}
+
+	showBrands(){
+		return Brands.find({}).fetch();
+	}
+
 	render(){
 		return(
 			<div>
@@ -21,9 +25,15 @@ export default class BrandsBlock extends TrackeReact(Component){
 								col-md-12
 								col-sm-12
 								col-xs-12 homeBrandsWrap">
-					<div className="col-lg-2 col-md-2 col-sm-2 col-xs-2 brandLogoWrap">
-						<img src="/img/banner.png"/>
-					</div>
+
+						{ this.showBrands().map( (brands,index)=>{
+							return (
+										<div key={index} className="col-lg-2 col-md-2 col-sm-2 col-xs-2 brandLogoWrap">
+											<img src="/img/banner.png"/>
+										</div>
+								);
+						  }) 
+						}
 				</div>
 			</div>
 		);

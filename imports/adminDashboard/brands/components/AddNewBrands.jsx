@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { render } from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import { Categories } from '../api/category.js';
+import { Brands } from '../api/brands.js';
 
 
-class AddNewCategory extends TrackerReact(Component){
+class AddNewBrands extends TrackerReact(Component){
 
 	constructor(props) {
 	  super(props);
 		  this.state = {
-		    "categoryName" : '',
+		    "brandName" : '',
 			"subscription" : {
-				"allCategories" : Meteor.subscribe("allCategories"),
+				"allBrands" : Meteor.subscribe("allBrands"),
 			}
 
 		  };	   	
@@ -24,7 +24,7 @@ class AddNewCategory extends TrackerReact(Component){
 			if(Object.keys(nextProps.post).length != 0){
 
 		            this.setState({
-		          		categoryName : nextProps.post.categoryName,
+		          		brandName : nextProps.post.brandName,
 		            })
 
 		            
@@ -37,8 +37,8 @@ class AddNewCategory extends TrackerReact(Component){
 
 	handleInputChange(event) {
 	    const target = event.target;
-	    const value = target.type === 'checkbox' ? target.checked : target.value;
-	    const name = target.name;
+	    const value  = target.value;
+	    const name   = target.name;
 
 	    this.setState({
 	      [name]: value
@@ -46,39 +46,39 @@ class AddNewCategory extends TrackerReact(Component){
 
 	}
 
-	allCategories(){
-		return Categories.find({}).fetch()
+	allBrands(){
+		return Brands.find({}).fetch()
 	}
 
-	updateCategoryInfo(event){
+	updateBrandInfo(event){
 		event.preventDefault();
-		var categoryId      = FlowRouter.getParam("categoryId");
+		var brandId      = FlowRouter.getParam("brandId");
 		var formvalues = {
-							'categoryName' : this.refs.categoryName.value,
+							'brandName' : this.refs.brandName.value,
 							// 'categoryImg'  : this.refs.categoryImg.value,
-							'categoryImg'  : "../images/mouse.jpeg",
-							'categoryId'   : categoryId,
+							'brandImg'  : "../images/mouse.jpeg",
+							'brandId'   : brandId,
 						}
 
-		if(categoryId){
-		    Meteor.call('updateCategory', formvalues, (error,result)=>{
+		if(brandId){
+		    Meteor.call('updateBrand', formvalues, (error,result)=>{
 		    	if(error){
 		    		console.log("client error"+error);
 		    		swal(error);
 		    	}else{
-		    		this.refs.categoryName.value = '';
-		    		FlowRouter.go('/addNewProductCategory');
-		    		swal('Category updated successfully!');
+		    		this.state.brandName = '';
+		    		FlowRouter.go('/addNewBrand');
+		    		swal('Brand updated successfully!');
 		    	}
 		    });
 		}else{
-		    Meteor.call('addNewCategory', formvalues, (error,result)=>{
+		    Meteor.call('addNewBrand', formvalues, (error,result)=>{
 		    	if(error){
 		    		console.log("client error"+error);
 		    		swal(error);
 		    	}else{
-		    		this.refs.categoryName.value = '';
-		    		swal('Category added successfully!');
+		    		this.state.brandName = '';
+		    		swal('Brand added successfully!');
 		    	}
 		    });			
 		}
@@ -86,15 +86,15 @@ class AddNewCategory extends TrackerReact(Component){
 
 	}
 
-	deleteCategory(event){
+	deleteBrand(event){
 		event.preventDefault();
 		var dltId = event.target.id;
-	    Meteor.call('deleteCategory', dltId, (error,result)=>{
+	    Meteor.call('deleteBrand', dltId, (error,result)=>{
 	    	if(error){
 	    		console.log("client error"+error);
 	    		swal(error);
 	    	}else{
-	    		swal('Category deleted successfully!');
+	    		swal('Brand deleted successfully!');
 	    	}
 	    });		
 	}
@@ -105,11 +105,11 @@ class AddNewCategory extends TrackerReact(Component){
 		if(!this.props.loading){
 		if(this.props.post){
 
-	  	  var categoryId = FlowRouter.getParam("categoryId");
-	  	  if(categoryId){
-	  	  	var categoryId = 'UPDATE';
+	  	  var brandId = FlowRouter.getParam("brandId");
+	  	  if(brandId){
+	  	  	var submitText = 'UPDATE';
 	  	  }else{
-	  	  	var categoryId = 'SAVE';
+	  	  	var submitText = 'SAVE';
 	  	  }
 
 	       return (
@@ -119,7 +119,7 @@ class AddNewCategory extends TrackerReact(Component){
 
 					<div className="box box-primary">
 			            <div className="box-header with-border">
-			            <h4 className="contentTitle">Add NEW CATEGORY</h4>
+			            <h4 className="contentTitle">Add NEW BRAND</h4>
 			            </div>
 					
 						<div className="box-body">
@@ -128,14 +128,14 @@ class AddNewCategory extends TrackerReact(Component){
 
 							<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 nopadLR">
 
-								<form onSubmit={this.updateCategoryInfo.bind(this)}>
+								<form onSubmit={this.updateBrandInfo.bind(this)}>
 
 
 									<div className="col-lg-6 col-sm-12 col-xs-12 col-md-12">
-										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Category Name</label>
+										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Brand Name</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" value={this.state.categoryName} onChange={this.handleInputChange.bind(this)} type="text" ref="categoryName" name="categoryName"/>
+								        	<input className="effectAddress UMname form-control" value={this.state.brandName} onChange={this.handleInputChange.bind(this)} type="text" ref="brandName" name="brandName"/>
 						                      <span className="input-group-addon addons"><i className="fa fa-object-group"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -145,10 +145,10 @@ class AddNewCategory extends TrackerReact(Component){
 									</div>
 
 									<div className="col-lg-6 col-sm-12 col-xs-12 col-md-12">
-										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Category Image</label>
+										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Brand Image</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="categoryImg" name="categoryImg"/>
+								        	<input className="effectAddress UMname form-control" type="text" ref="brandImg" name="brandImg"/>
 						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -159,7 +159,7 @@ class AddNewCategory extends TrackerReact(Component){
 
 
 								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<input type="submit" className="btn btn-primary col-lg-4 col-lg-offset-4 col-md-3 col-sm-12 col-xs-12 btn-Btn1" value={categoryId}/>
+									<input type="submit" className="btn btn-primary col-lg-4 col-lg-offset-4 col-md-3 col-sm-12 col-xs-12 btn-Btn1" value={submitText}/>
 								</div>
 							</form>
 							</div>
@@ -170,22 +170,22 @@ class AddNewCategory extends TrackerReact(Component){
 								<thead>
 									<tr className="tableHeader">
 										<th> Sr. </th>
-										<th> Category Name </th>
-										<th> Category Image </th>
+										<th> Brand Name </th>
+										<th> Brand Image </th>
 										<th> Action </th>
 									</tr>
 								</thead>
 								<tbody>
-									{ this.allCategories().map( (categoryInfo,index)=>{
+									{ this.allBrands().map( (brandInfo,index)=>{
 										return <tr key={index}>
 													<td>{index+1}</td>
-													<td>{categoryInfo.categoryName}</td>
-													<td><img src={categoryInfo.categoryImg} className="img-responsive"/></td>
+													<td>{brandInfo.brandName}</td>
+													<td><img src={brandInfo.brandImg} className="img-responsive"/></td>
 													<td>
-														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addCategory-'+index}></i>
-														<a href={"/addNewProductCategory/"+categoryInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
+														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addBrand-'+index}></i>
+														<a href={"/addNewBrand/"+brandInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
 
-														<div id={'addCategory-'+index} className="modal fade" role="dialog">
+														<div id={'addBrand-'+index} className="modal fade" role="dialog">
 														  <div className="modal-dialog">
 														    <div className="modal-content">
 														      <div className="modal-header">
@@ -193,10 +193,10 @@ class AddNewCategory extends TrackerReact(Component){
 														        <h4 className="modal-title">Delete Category</h4>
 														      </div>
 														      <div className="modal-body">
-														        <p>Do you want to delete category '{categoryInfo.categoryName}'?</p>
+														        <p>Do you want to delete category '{brandInfo.brandName}'?</p>
 														      </div>
 														      <div className="modal-footer">
-														        <button type="button" id={categoryInfo._id} onClick={this.deleteCategory.bind(this)} className="btn btn-danger pull-left" data-dismiss="modal">Delete</button>
+														        <button type="button" id={brandInfo._id} onClick={this.deleteBrand.bind(this)} className="btn btn-danger pull-left" data-dismiss="modal">Delete</button>
 														        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
 														      </div>
 														    </div>
@@ -230,26 +230,24 @@ class AddNewCategory extends TrackerReact(Component){
 	    	);
 	    }
 
-
 	} 
-
 }
 
-export default AddNewCategoryContainer  = withTracker(props => {
+export default AddNewBrandsContainer  = withTracker(props => {
   // Do all your reactive data access in this method.
   // Note that this subscription will get cleaned up when your component is unmounted
 
-    var categoryId      = FlowRouter.getParam("categoryId");
-    // console.log('categoryId: '+categoryId);
+    var brandId      = FlowRouter.getParam("brandId");
+    // console.log('brandId: '+brandId);
 
-    const postHandle    = Meteor.subscribe('findCategory',categoryId);
-    const post          = Categories.findOne({'_id':categoryId})||{};
-          loading       = !postHandle.ready();   	
+    const postHandle    = Meteor.subscribe('findBrand',brandId);
+    const post          = Brands.findOne({'_id':brandId})||{};
+    const loading       = !postHandle.ready();   	
      // console.log('post: ',post);
     return {
         loading,
         post,
     };
-})(AddNewCategory);
+})(AddNewBrands);
 
 
