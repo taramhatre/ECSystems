@@ -33,7 +33,20 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					            <i className="fa fa-dashboard"></i> <span>Dashboard</span>
 					          </a>
 					        </li>
-	
+
+					        <li className="treeview">
+					          <a href="#">
+					            <i className="fa fa-pie-chart" aria-hidden="true"></i>
+					            <span>Categories</span>
+					            <span className="pull-right-container">
+					              <i className="fa fa-angle-left pull-right"></i>
+					            </span>
+					          </a>
+					          <ul className="treeview-menu">
+					            <li><a href="/addNewProductCategory"><i className="fa fa-circle-o"></i>Add New Category</a></li>  
+					          </ul>
+					        </li>
+
 					        <li className="treeview">
 					          <a href="#">
 					            <i className="fa fa-product-hunt" aria-hidden="true"></i>
@@ -46,15 +59,15 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					            <li><a href="/featuredProducts"><i className="fa fa-circle-o"></i> Featured Products</a></li>
 					            <li><a href="/viewAllProducts"><i className="fa fa-circle-o"></i> Product List</a></li>
 					            <li><a href="/addNewProducts"><i className="fa fa-circle-o"></i>Add New Product</a></li>
-					            <li><a href="/BulkUploadProducts"><i className="fa fa-circle-o"></i>Bulk Upload Product</a></li>
-					            <li><a href="/addNewProductCategory"><i className="fa fa-circle-o"></i>Add New Category</a></li>
+					            <li><a href="/BulkUploadProducts"><i className="fa fa-circle-o"></i>Bulk Upload Products</a></li>
+					            
 					            
 					          </ul>
 					        </li>
 
 					        <li className="treeview">
 					          <a href="#">
-					            <i className="fa fa-product-hunt" aria-hidden="true"></i>
+					            <i className="fa fa-cubes" aria-hidden="true"></i>
 					            <span>Services</span>
 					            <span className="pull-right-container">
 					              <i className="fa fa-angle-left pull-right"></i>
@@ -64,16 +77,21 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					            <li><a href="/featuredServices"><i className="fa fa-circle-o"></i> Featured Services</a></li>
 					            <li><a href="/viewAllServices"><i className="fa fa-circle-o"></i> Services List</a></li>
 					            <li><a href="/addNewService"><i className="fa fa-circle-o"></i>Add New Service</a></li>
+					            <li><a href="/BulkUploadServices"><i className="fa fa-circle-o"></i>Bulk Upload Services</a></li>
 					            
 					          </ul>
 					        </li>
 
 					        <li className="treeview">
 					          <a href="/adminDashboard">
-					            <i className="fa fa-dashboard"></i> <span>Reset Password</span>
+					            <i className="fa fa-unlock-alt"></i> <span>Reset Password</span>
 					          </a>
 					        </li>
 
+					        <li className="treeview">
+					          <a href="/companySettings">
+					            <i className="fa fa-cogs"></i>Company Settings</a>
+					        </li>
 
 					        <li className="treeview">
 					          <a href="/addfaq">

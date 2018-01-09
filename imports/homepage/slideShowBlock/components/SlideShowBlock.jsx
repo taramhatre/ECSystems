@@ -8,7 +8,8 @@ import CategoryPage from '/imports/homepage/categoryBlock/components/CategoryPag
 import TopProductsBlock from '/imports/homepage/topProductsBlock/components/TopProductsBlock.jsx';
 import BrandsBlock from '/imports/homepage/brandsBlock/components/BrandsBlock.jsx';
 import ServicesBlock from '/imports/homepage/servicesBlock/components/ServicesBlock.jsx';
-import ContactUsBlock from '/imports/homepage/contactUsBlock/components/ContactUsBlock.jsx';
+import ContactUsBlockContainer from '/imports/homepage/contactUsBlock/components/ContactUsBlock.jsx';
+
 export default class SlideShowBlock extends TrackerReact(Component){
 	render(){
 		return(
@@ -61,7 +62,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					<TopProductsBlock/>
 					<BrandsBlock/>
 					<ServicesBlock/>
-					<ContactUsBlock/>
+					<ContactUsBlockContainer/>
 				</div>
 			);
 	}

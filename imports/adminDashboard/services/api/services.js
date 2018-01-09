@@ -65,29 +65,23 @@ Meteor.methods({
     console.log(data.length);
     check( data, Array);
 
-    for ( var i = 0; i < data.length; i++ ){
-      var uploadProduct    = data[i];
-      var productName      = uploadProduct.productName;
-      var brand            = uploadProduct.brand;
-      var shortDescription = uploadProduct.shortDescription;
-      var materialCare     = uploadProduct.materialCare;
-      var description      = uploadProduct.description;
-      var price            = uploadProduct.price;
-      var discount         = uploadProduct.discount;
-      var category         = uploadProduct.category;
+    for ( var i = 0; i < data.length-1; i++ ){
+      var uploadService    = data[i];
+      var serviceName      = uploadService.serviceName;
+      var shortDescription = uploadService.shortDescription;
+      var description      = uploadService.description;
+      var price            = uploadService.price;
+      var discount         = uploadService.discount;
 
       // console.log(Make,Model,Year);
       
       UserSession.set("allProgressbarSession",Meteor.userId()) ; 
-      var productsId = Services.insert({ 
-              'productName'      : productName,
-              'brand'            : brand,
+      var serviceId = Services.insert({ 
+              'serviceName'      : serviceName,
               'shortDescription' : shortDescription,                
-              'materialCare'     : materialCare,                 
               'description'      : description,                 
               'price'            : price,                 
               'discount'         : discount,                 
-              'category'         : category,                 
               'topProduct'       : false,  
               "createdAt"        : new Date(),               
         });

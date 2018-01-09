@@ -4,7 +4,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 
-export default class BulkUploadProducts extends TrackerReact (Component){
+export default class BulkServiceUpload extends TrackerReact (Component){
     
     componentDidMount() {
         renderFunction();
@@ -55,21 +55,21 @@ export default class BulkUploadProducts extends TrackerReact (Component){
 
     }
 
-    uploadBulkProductsData(event){
+    uploadBulkServicesData(event){
         event.preventDefault();
 
         Papa.parse( event.target.files[0], {
 		    header: true,
 		    complete( results, file ) {
 		    	// console.log(JSON.stringify(results));
-		    	Meteor.call( 'BulkProductsCSVUpload', results.data, ( error, result ) => {
+		    	Meteor.call( 'BulkServicesCSVUpload', results.data, ( error, result ) => {
                 	if ( error ) {
 
          			} else {
                         swal({
                             position: 'top-right',
                             type: 'success',
-                            title: 'Products Data Added Successfully',
+                            title: 'Services Data Added Successfully',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -90,7 +90,7 @@ export default class BulkUploadProducts extends TrackerReact (Component){
 	          <div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 	            <div className="box box-primary">
 	              <div className="box-header with-border">
-	              <h2 className="contentTitle">UPLOAD PRODUCTS DATA</h2>
+	              <h2 className="contentTitle">UPLOAD SERVICES DATA</h2>
 	              </div>
 	           
 		            <div className="box-body">
@@ -99,7 +99,7 @@ export default class BulkUploadProducts extends TrackerReact (Component){
                                 <div className="adminBlkUploadBtnDiv">
                                     <div className="input-group">
                                         <span className="adminBlkUpldIcon input-group-addon" id="basic-addon1"><i className="fa fa-cloud-upload" aria-hidden="true"></i></span>
-                                        <input onChange={this.uploadBulkProductsData.bind(this)} className="adminBlkUpldBkg form-control adminBlkUploadBtn" type="file" name="" />
+                                        <input onChange={this.uploadBulkServicesData.bind(this)} className="adminBlkUpldBkg form-control adminBlkUploadBtn" type="file" name="" />
                                     </div>
                                 </div>
                             </div>
