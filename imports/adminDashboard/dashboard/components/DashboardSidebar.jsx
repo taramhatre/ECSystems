@@ -61,8 +61,9 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					            </span>
 					          </a>
 					          <ul className="treeview-menu">
-					            <li><a href="/viewAllProducts"><i className="fa fa-circle-o"></i> Services List</a></li>
-					            <li><a href="/newProductsInfo"><i className="fa fa-circle-o"></i>Add New Service</a></li>
+					            <li><a href="/featuredServices"><i className="fa fa-circle-o"></i> Featured Services</a></li>
+					            <li><a href="/viewAllServices"><i className="fa fa-circle-o"></i> Services List</a></li>
+					            <li><a href="/addNewService"><i className="fa fa-circle-o"></i>Add New Service</a></li>
 					            
 					          </ul>
 					        </li>

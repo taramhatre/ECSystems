@@ -34,7 +34,7 @@ Meteor.methods({
 	return productsId;						          	
   },
 
-  'deleteProduct' : function(dltId) {
+  'deleteProducts' : function(dltId) {
 	Products.remove({'_id': dltId}); 				          	
   },
 
@@ -71,7 +71,7 @@ Meteor.methods({
     console.log(data.length);
     check( data, Array);
 
-    for ( var i = 0; i < data.length; i++ ){
+    for ( var i = 0; i < data.length-1; i++ ){
       var uploadProduct    = data[i];
       var productName      = uploadProduct.productName;
       var brand            = uploadProduct.brand;
