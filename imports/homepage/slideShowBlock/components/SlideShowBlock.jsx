@@ -40,7 +40,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 								var activeStatus = '';
 							}	
 							return (
-									<li data-target="#mySlideShow" data-slide-to={index} className={activeStatus}></li>
+									<li data-target="#mySlideShow" key={index} data-slide-to={index} className={activeStatus}></li>
 								);
 						  }) 
 						}

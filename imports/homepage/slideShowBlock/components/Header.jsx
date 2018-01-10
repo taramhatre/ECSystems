@@ -17,12 +17,12 @@ class Header extends TrackerReact(Component){
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span> 
 				      </button>
-				      <a className="navbar-brand" href="#">{this.props.post.companyName}</a>
+				      <a className="navbar-brand companyName" href="/">{this.props.post.companyName}</a>
 				    </div>
 				    <div className="collapse navbar-collapse" id="myNavbar">
 				      <ul className="nav navbar-nav EC-navbar-nav col-lg-8 col-md-8">
 				        <li className="active1"><a href="/">HOME</a></li>
-				        <li><a href="/supply">SUPPLY</a></li>
+				        {/*<li><a href="/supply">SUPPLY</a></li>*/}
 				        <li><a href="/services">SERVICES</a></li> 
 				        <li><a href="/contact">CONTACT</a></li> 
 				      </ul>

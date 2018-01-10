@@ -1,7 +1,7 @@
 .homeMenuWrap{
 	padding: 0px;
-	z-index: 12;
-    position: absolute;
+/*	z-index: 12;
+    position: absolute;*/
 }
 .ecEleHomeWrap{
 	padding: 0px;
@@ -118,4 +118,17 @@
 .contactInWrap h5{
 	color: #111;
 	font-weight: bold;
+}
+
+.noPadLR{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.companyName:hover{
+	color: #555 !important;
+}
+
+#myNavbar li>a:focus{
+	color: #555 !important;
 }
