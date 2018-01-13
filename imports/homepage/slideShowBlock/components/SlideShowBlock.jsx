@@ -30,7 +30,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 		return(
 				<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 ecEleHomeWrap">
 					<HeaderContainer/>
-					<div id="mySlideShow" className="carousel slide ECSlideShow" data-ride="carousel">
+					<div id="mySlideShow" className="carousel slide ECSlideShow" data-ride="carousel" data-interval="3000">
 					  
 					<ol className="carousel-indicators">
 						{ this.showallSlides().map( (slides,index)=>{

@@ -26,6 +26,7 @@
 }
 .navbar-inverse .navbar-nav > li > a{
 	color: #333;
+    font-size: 18px;
 }
 .navbar-inverse .navbar-nav > li > a:hover{
 	color: #f66;
@@ -109,6 +110,7 @@
 }
 .tupProdOutWrap{
 	padding-left: 0px;
+    margin-bottom: 1.5%;
 }
 .homeConatctWrap{
 	background: #fff;
@@ -127,8 +129,75 @@
 
 .companyName:hover{
 	color: #555 !important;
+    font-size: 20px !important;
+}
+.companyName{
+    font-size: 20px !important;
 }
 
 #myNavbar li>a:focus{
 	color: #555 !important;
+}
+
+ /*.productSearch{
+   width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('/img/search.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.productSearch:focus {
+    width: 100%;
+}*/
+
+.search input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.search button {
+    float: left;
+    width: 20%;
+    padding: 6px;
+    background: #3c8dbc;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background: #0b7dda;
+}
+
+.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.search{
+	float: right;
+    margin-top: -4.5%;
+}
+.searchBizList{
+	background: #fcc;
+    padding: 5px 0px 0px 0px;
+    color: #222;
+    font-size: 16px;
+    position: absolute;
+    margin-top: 38px;
+    z-index: 11;
 }
