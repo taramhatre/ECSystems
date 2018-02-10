@@ -50,13 +50,40 @@ class AddNewBrands extends TrackerReact(Component){
 		return Brands.find({}).fetch()
 	}
 
+
+//get brand image from user
+	
+	imgBrowse(event){
+	    event.preventDefault();
+
+	    /*--------------Code form Logo Image-----------*/
+
+	    var file = event.target.files[0];  //assuming you have only one file
+	    var render = new FileReader(); //this works only in html5
+	      render.onload =function(event){
+	         var fileData = render.result;
+	         var fileName = file.name;
+	         Session.set("brandImg",fileData);
+	         // Meteor.call('tempLogoImageUpload', fileName, fileData,function(err,result){
+	         //  if(err){
+	         //    console.log(err);
+	         //  }else{
+	         //    console.log('Image Uploaded!');
+	         //  }
+	         // });
+	      };
+
+	      render.readAsDataURL(file);
+  }
+
 	updateBrandInfo(event){
 		event.preventDefault();
 		var brandId      = FlowRouter.getParam("brandId");
+		var brandImg = Session.get('brandImg');
 		var formvalues = {
 							'brandName' : this.refs.brandName.value,
 							// 'categoryImg'  : this.refs.categoryImg.value,
-							'brandImg'  : "../images/mouse.jpeg",
+							'brandImg'  : brandImg,
 							'brandId'   : brandId,
 						}
 
@@ -148,7 +175,7 @@ class AddNewBrands extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Brand Image</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="brandImg" name="brandImg"/>
+								        	<input className="effectAddress UMname form-control" onChange={this.imgBrowse.bind(this)} type="file" ref="brandImg" name="brandImg"/>
 						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -180,7 +207,7 @@ class AddNewBrands extends TrackerReact(Component){
 										return <tr key={index}>
 													<td>{index+1}</td>
 													<td>{brandInfo.brandName}</td>
-													<td><img src={brandInfo.brandImg} className="img-responsive"/></td>
+													<td><img src={brandInfo.brandImg} className="img-responsive slideTableImg"/></td>
 													<td>
 														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addBrand-'+index}></i>
 														<a href={"/addNewBrand/"+brandInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>

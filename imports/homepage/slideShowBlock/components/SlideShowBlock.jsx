@@ -55,11 +55,15 @@ export default class SlideShowBlock extends TrackerReact(Component){
 							}	
 							return (
 								    <div className={"item "+ activeStatus} key={index}>
-								      <img src="/img/slide3.jpg" className="col-lg-12 col-sm-12 col-md-12 col-xs-12 bannerimg"/>
+								      <img src={slides.slideImg} className="col-lg-12 col-sm-12 col-md-12 col-xs-12 bannerimg"/>
 								      <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 sliderTitles">
 									      <div><h1> {slides.tagLine1}</h1></div>
-									      <div><h4> {slides.tagLine2}</h4></div>
+									      <div><h3> {slides.tagLine2}</h3></div>
 									      <div><h4> <b>{slides.tagLine3} </b></h4></div>
+									      <div><h5> <b>Cash On Delivery </b></h5></div>
+									      <div><h5> <b>Timing 10 AM TO 7 PM </b></h5></div>
+									      <button className="btn btn-primary freeDelBtn">Free Delivery </button>
+
 								      </div>
 								    </div>
 								);

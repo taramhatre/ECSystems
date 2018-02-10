@@ -20,6 +20,7 @@ Meteor.methods({
 
   'addNewProduct' : function(formvalues) {
 	var productsId = Products.insert({
+                    'productImg'       : formvalues.productImg,
 										'productName'      : formvalues.productName,
 										'brand'            : formvalues.brand,
 										'shortDescription' : formvalues.shortDescription,
@@ -43,6 +44,7 @@ Meteor.methods({
       { '_id': formvalues.productid },
       {
         $set:{
+        'productImg'       : formvalues.productImg,
 				'productName'      : formvalues.productName,
 				'brand'            : formvalues.brand,
 				'shortDescription' : formvalues.shortDescription,
@@ -51,7 +53,7 @@ Meteor.methods({
 				'price'            : parseFloat(formvalues.price),
 				'discount'         : parseFloat(formvalues.discount),
 				'category'         : formvalues.category,
-	            "updatedAt"        : new Date(),
+	       "updatedAt"        : new Date(),
       } //End of set
     });  	
   },

@@ -35,7 +35,7 @@ export default class ShowAllProducts extends TrackeReact(Component){
 										<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
 											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap">
 												<div className="productNM"> {products.productName} </div>
-												<img src="/img/banner.png"/>
+												<img src={products.productImg}/>
 												<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>
 											</div>
 										</div>

@@ -52,6 +52,7 @@ class AddNewService extends TrackerReact(Component){
 	updateServiceDetails(event){
 		event.preventDefault();
 		var serviceId      = FlowRouter.getParam("serviceId");
+		var serviceImg = Session.get('serviceImg');
 		var formValues = {
 							'serviceName'      : this.refs.serviceName.value,
 							'shortDescription' : this.refs.shortDescription.value,
@@ -59,6 +60,7 @@ class AddNewService extends TrackerReact(Component){
 							'price'            : this.refs.price.value,
 							'discount'         : this.refs.discount.value,
 							'serviceId'        : serviceId,
+							'serviceImg'       : serviceImg,
 						}
 
 		// console.log('formValues: ',formValues);
@@ -95,6 +97,32 @@ class AddNewService extends TrackerReact(Component){
 	
 
 	}
+
+	//get image from user
+	
+	serviceImgBrowse(event){
+	    event.preventDefault();
+
+	    /*--------------Code form Logo Image-----------*/
+
+	    var file = event.target.files[0];  //assuming you have only one file
+	    var render = new FileReader(); //this works only in html5
+	      render.onload =function(event){
+	         var fileData = render.result;
+	         var fileName = file.name;
+	         Session.set("serviceImg",fileData);
+	         // Meteor.call('tempLogoImageUpload', fileName, fileData,function(err,result){
+	         //  if(err){
+	         //    console.log(err);
+	         //  }else{
+	         //    console.log('Image Uploaded!');
+	         //  }
+	         // });
+	      };
+
+	      render.readAsDataURL(file);
+  }
+
 
 
 	render() {
@@ -188,6 +216,18 @@ class AddNewService extends TrackerReact(Component){
 									    <div className="inputEffect col-xs-12 input-group">
 								        	<textarea className="effectAddress UMname form-control" rows="5" type="text" onChange={this.handleInputChange.bind(this)} value={this.state.description} ref="description" name="description" required></textarea>
 						                      <span className="input-group-addon addons"><i className="fa fa-envelope"></i></span>
+								              <span className="focusBorder">
+								            	<i></i>
+								              </span>
+									    </div>
+										</div>
+									</div>
+									<div className="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Service Image</label>
+										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
+									    <div className="inputEffect col-xs-12 input-group">
+								        	<input className="effectAddress UMname form-control" onChange={this.serviceImgBrowse.bind(this)} type="file" ref="serviceImg" name="slideImg"/>
+						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
 								              </span>

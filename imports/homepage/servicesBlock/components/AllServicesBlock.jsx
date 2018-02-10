@@ -33,7 +33,7 @@ export default class AllServicesBlock extends TrackeReact(Component){
 									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
 										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap">
 											<div className="productNM"> {services.serviceName} </div>
-											<img src="/img/banner.png"/>
+											<img src={services.serviceImg}/>
 											<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {services.price}</div>
 										</div>
 									</div>

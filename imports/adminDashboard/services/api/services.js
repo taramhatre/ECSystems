@@ -20,6 +20,7 @@ Meteor.methods({
 
   'addNewService' : function(formvalues) {
 	var productsId = Services.insert({
+                    'serviceImg'       : formvalues.serviceImg,
 										'serviceName'      : formvalues.serviceName,
 										'shortDescription' : formvalues.shortDescription,
 										'description'      : formvalues.description,
@@ -40,6 +41,7 @@ Meteor.methods({
       { '_id': formvalues.serviceId },
       {
         $set:{
+        'serviceImg'       : formvalues.serviceImg,
 				'serviceName'      : formvalues.serviceName,
 				'shortDescription' : formvalues.shortDescription,
 				'description'      : formvalues.description,

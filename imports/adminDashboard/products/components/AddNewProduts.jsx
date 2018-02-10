@@ -62,6 +62,7 @@ class AddNewProduts extends TrackerReact(Component){
 	updateProductDetails(event){
 		event.preventDefault();
 		var productid      = FlowRouter.getParam("productId");
+		var productImg = Session.get('productImg');
 		var formValues = {
 							'productName'      : this.refs.productName.value,
 							'brand'            : this.refs.brand.value,
@@ -72,6 +73,7 @@ class AddNewProduts extends TrackerReact(Component){
 							'discount'         : this.refs.discount.value,
 							'category'         : this.refs.category.value,
 							'productid'        : productid,
+							'productImg'       : productImg,
 						}
 
 		// console.log('formValues: ',formValues);
@@ -118,6 +120,31 @@ class AddNewProduts extends TrackerReact(Component){
 	allCategories(){
 		return Categories.find({}).fetch()
 	}
+
+	//get image from user
+	
+	productImgBrowse(event){
+	    event.preventDefault();
+
+	    /*--------------Code form Logo Image-----------*/
+
+	    var file = event.target.files[0];  //assuming you have only one file
+	    var render = new FileReader(); //this works only in html5
+	      render.onload =function(event){
+	         var fileData = render.result;
+	         var fileName = file.name;
+	         Session.set("productImg",fileData);
+	         // Meteor.call('tempLogoImageUpload', fileName, fileData,function(err,result){
+	         //  if(err){
+	         //    console.log(err);
+	         //  }else{
+	         //    console.log('Image Uploaded!');
+	         //  }
+	         // });
+	      };
+
+	      render.readAsDataURL(file);
+  }
 
 
 	render() {
@@ -253,6 +280,18 @@ class AddNewProduts extends TrackerReact(Component){
 											<a href="/addNewProductCategory">Add categories</a>
 
 										}
+										</div>
+									</div>
+									<div className="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Product Image</label>
+										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
+									    <div className="inputEffect col-xs-12 input-group">
+								        	<input className="effectAddress UMname form-control" onChange={this.productImgBrowse.bind(this)} type="file" ref="productImg" name="slideImg"/>
+						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
+								              <span className="focusBorder">
+								            	<i></i>
+								              </span>
+									    </div>
 										</div>
 									</div>
 

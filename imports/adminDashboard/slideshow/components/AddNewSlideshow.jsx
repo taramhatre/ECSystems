@@ -3,7 +3,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { render } from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { SlideShow } from '../api/slideshow.js';
-
+import { TempLogoImage } from '../api/tempLogoImage.js';
+import {Session} from 'meteor/session';
 
 class AddNewSlideshow extends TrackerReact(Component){
 
@@ -15,6 +16,7 @@ class AddNewSlideshow extends TrackerReact(Component){
 		    "tagLine3" : '',
 			"subscription" : {
 				"allSlideShow" : Meteor.subscribe("allSlideShow"),
+				"tempLogoImage" : Meteor.subscribe("tempLogoImage"),
 			}
 
 		  };	   	
@@ -54,7 +56,36 @@ class AddNewSlideshow extends TrackerReact(Component){
 		return SlideShow.find({}).fetch()
 	}
 
+//get image from user
+	
+	imgBrowse(event){
+	    event.preventDefault();
+
+	    /*--------------Code form Logo Image-----------*/
+
+	    var file = event.target.files[0];  //assuming you have only one file
+	    var render = new FileReader(); //this works only in html5
+	      render.onload =function(event){
+	         var fileData = render.result;
+	         var fileName = file.name;
+	         Session.set("img",fileData);
+	         // Meteor.call('tempLogoImageUpload', fileName, fileData,function(err,result){
+	         //  if(err){
+	         //    console.log(err);
+	         //  }else{
+	         //    console.log('Image Uploaded!');
+	         //  }
+	         // });
+	      };
+
+	      render.readAsDataURL(file);
+  }
+
+
 	updateCategoryInfo(event){
+		// var image = TempLogoImage.findOne({});
+	 // //    var logoFilename = image.logoFilename;
+	    var companyLogo= Session.get('img');
 		event.preventDefault();
 		var slideId      = FlowRouter.getParam("slideId");
 		var formvalues = {
@@ -62,7 +93,7 @@ class AddNewSlideshow extends TrackerReact(Component){
 							'tagLine2' : this.refs.tagLine2.value,
 							'tagLine3' : this.refs.tagLine3.value,
 							// 'categoryImg'  : this.refs.categoryImg.value,
-							'slideImg'  : "../images/mouse.jpeg",
+							'slideImg'  : companyLogo,
 							'slideId'      : slideId,
 						}
 
@@ -185,7 +216,7 @@ class AddNewSlideshow extends TrackerReact(Component){
 										<label className="col-lg-6 col-sm-6 col-xs-3 col-md-6 allTimeLabel">Slide Image</label>
 										<div className="form-group col-lg-12 col-sm-12 col-xs-12 col-md-12">
 									    <div className="inputEffect col-xs-12 input-group">
-								        	<input className="effectAddress UMname form-control" type="text" ref="slideImg" name="slideImg"/>
+								        	<input className="effectAddress UMname form-control" onChange={this.imgBrowse.bind(this)} type="file" ref="slideImg" name="slideImg"/>
 						                      <span className="input-group-addon addons"><i className="fa fa-picture-o"></i></span>
 								              <span className="focusBorder">
 								            	<i></i>
@@ -221,7 +252,7 @@ class AddNewSlideshow extends TrackerReact(Component){
 													<td>{slideInfo.tagLine1}</td>
 													<td>{slideInfo.tagLine2}</td>
 													<td>{slideInfo.tagLine3}</td>
-													<td><img src={slideInfo.slideImg} className="img-responsive"/></td>
+													<td><img src={slideInfo.slideImg} className="img-responsive slideTableImg"/></td>
 													<td>
 														<i className="fa fa-trash col-lg-1 dltCategory" aria-hidden="true" data-toggle="modal" data-target={'#addSlide-'+index}></i>
 														<a href={"/addNewSlide/"+slideInfo._id}><i className="fa fa-pencil-square-o col-lg-1" aria-hidden="true"></i></a>
