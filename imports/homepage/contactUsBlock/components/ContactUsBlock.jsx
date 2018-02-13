@@ -22,21 +22,21 @@ class ContactUsBlock extends TrackeReact(Component){
 								    col-sm-12
 								    col-xs-12 homeConatctWrap">
 							<div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 contactInWrap">
-								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 contactFooterWrap">
 									<h5>{this.props.post.companyName}</h5>
 									<div>{this.props.post.address}</div>
 									<div>{this.props.post.phoneNumber}</div>
 								</div>
 							</div>
-							<div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 contactInWrap">
-								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 contactInWrap ">
+								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 contactFooterWrap">
 									<h5>Timings</h5>
 									<div>{this.props.post.timing}</div>
 									<div>WE work an all Holidays</div>
 								</div>
 							</div>
 							<div className="col-lg-4 col-md-4 col-sm-4 col-xs-4 contactInWrap">
-								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 contactFooterWrap">
 									<h5>About Us</h5>
 									<div>Supply</div>
 									<div>SERVICES</div>

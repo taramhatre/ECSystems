@@ -88,7 +88,7 @@ export default class TopProductsBlock extends TrackeReact(Component){
 							col-sm-12
 							col-xs-12 homeTopProdWrap">
 					<h4 > TOP PRODUCTS </h4>
-					<div className="col-lg-3 search">
+					<div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 search">
 					  <input type="text" placeholder="Search Products.." name="search2" id="product" onInput={this.getTextValue.bind(this)}/>
 					  <button type="submit" ><i className="fa fa-search"></i></button>
 					  <div className="searcBizLi">{bizNameArray}</div>
@@ -98,11 +98,21 @@ export default class TopProductsBlock extends TrackeReact(Component){
 
 						{ this.showTopProducts().map( (products,index)=>{
 							return (
-										<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
-											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap">
-												<div className="productNM"> {products.productName} </div>
-												<img src={products.productImg}/>
-												<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>
+										<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+											<div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12 tupProdOutWrap">
+												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
+													<div className="productNM"> {products.productName} </div>
+													<img src={products.productImg}/>
+													<div className="col-lg-12 col-md-12 mask">
+								                        <h2>{products.brand}</h2>
+								                        <p>{products.shortDescription}</p>
+								                        <h3>Call - 8888433075</h3>
+								                        <a href={`/productInfo/${products._id}`} className="info">
+								                        	<button className="btn btn-danger productBtnReadMore"> Read More </button>
+								                        </a>
+							                   		 </div>
+													<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>
+												</div>
 											</div>
 										</div>
 								);

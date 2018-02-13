@@ -12,7 +12,7 @@ class Header extends TrackerReact(Component){
 				<nav className="navbar navbar-inverse ECSNavbar">
 				  <div className="container-fluid">
 				    <div className="navbar-header">
-				      <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				      <button type="button" className="navbar-toggle ecSystemBtn" data-toggle="collapse" data-target="#myNavbar">
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span> 
@@ -20,7 +20,7 @@ class Header extends TrackerReact(Component){
 				      <a className="navbar-brand companyName" href="/">{this.props.post.companyName}</a>
 				    </div>
 				    <div className="collapse navbar-collapse" id="myNavbar">
-				      <ul className="nav navbar-nav EC-navbar-nav col-lg-8 col-md-8">
+				      <ul className="nav navbar-nav EC-navbar-nav col-lg-8 col-md-8 col-sm-12 col-xs-12">
 				        <li className="active1"><a href="/">HOME</a></li>
 				        <li><a href="/products">PRODUCTS</a></li>
 				        <li><a href="/services">SERVICES</a></li> 

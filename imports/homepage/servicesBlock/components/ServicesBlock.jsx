@@ -31,7 +31,7 @@ export default class ServicesBlock extends TrackeReact(Component){
 							col-sm-12
 							col-xs-12 homeTopProdWrap">
 					<h4> TOP SERVICES </h4>
-					<div className="col-lg-3 search">
+					<div className="col-lg-3 col-md-3 col-xs-12 col-sm-12  search">
 					  <input type="text" placeholder="Search Services.." name="search2"/>
 					  <button type="submit"><i className="fa fa-search"></i></button>
 					</div>
@@ -39,11 +39,21 @@ export default class ServicesBlock extends TrackeReact(Component){
 
 						{ this.showTopServices().map( (services,index)=>{
 							return (
-									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
-										<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap">
-											<div className="productNM"> {services.serviceName} </div>
-											<img src={services.serviceImg}/>
-											<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {services.price}</div>
+									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+										<div className="col-lg-12 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
+											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
+												<div className="productNM"> {services.serviceName} </div>
+												<img src={services.serviceImg}/>
+												<div className="col-lg-12 col-md-12 mask">
+							                        <h2>{services.brand}</h2>
+							                        <p>{services.shortDescription}</p>
+							                        <h3>Call - 8888433075</h3>
+							                        <a href={`/service/${services._id}`} className="info">
+							                        	<button className="btn btn-danger productBtnReadMore"> Read More </button>
+							                        </a>
+							                   	</div>
+												<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {services.price}</div>
+											</div>
 										</div>
 									</div>
 								);

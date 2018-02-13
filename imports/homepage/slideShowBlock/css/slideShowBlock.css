@@ -1,7 +1,8 @@
+
 .homeMenuWrap{
 	padding: 0px;
-/*	z-index: 12;
-    position: absolute;*/
+	z-index: 11;
+    position: absolute;
 }
 .ecEleHomeWrap{
 	padding: 0px;
@@ -19,7 +20,8 @@
 	color: #333!important;
 	border: 0px solid #fff !important;
 	border-radius: 0px;
-    padding-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 10px;
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
@@ -88,6 +90,9 @@
 	text-align: center;
 	margin-bottom: 30px;
     margin-top: 20px;
+    color: #111;
+    text-decoration: underline;
+    font-size: 24px;
 }
 .topProductWrap{
 	background: #fff;
@@ -95,26 +100,36 @@
     padding-top: 30px;
     text-align: center;
     padding-bottom: 30px;
+    margin-bottom: 20px;
 }
-.topProductWrap img{
-	width: 100%;
-    height: 150px;
+.topProductWrap:hover{
+    opacity: 0.4px;
+}
+.topProductWrap img, .showallProductSer img{
+	width: 85%;
+    height: 220px;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+.showallProductSer img{
+    width: 95%;
 }
 .topProdShowMore{
 	text-align: center;
 }
 .topProdShowMore button{
 	border-radius: 100px;
-	margin-top: 20px;
+	/*margin-top: 20px;*/
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 .brandLogoWrap{
 	background: #fff;
 }
 .brandLogoWrap img{
 	width: 100%;
-    height: 110px;
+    height: 85px;
 }
 .homeBrandsWrap{
 	background: #fff;
@@ -122,13 +137,16 @@
 	padding-bottom: 10px;
 }
 .tupProdOutWrap{
-	padding-left: 0px;
+    padding-left: 0px;
+	padding-right: 0px;
     margin-bottom: 1.5%;
 }
 .homeConatctWrap{
 	background: #fff;
 	padding-top: 20px;
 	padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .contactInWrap h5{
 	color: #111;
@@ -174,7 +192,7 @@
 .search input[type=text] {
     padding: 6px;
     font-size: 17px;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     float: left;
     width: 80%;
     background: #f1f1f1;
@@ -204,6 +222,7 @@
 .search{
 	float: right;
     margin-top: -4.5%;
+    margin-bottom: 25px;
 }
 .searchBizList{
 	background: #fcc;
@@ -213,4 +232,164 @@
     position: absolute;
     margin-top: 38px;
     z-index: 11;
+}
+.productNM{
+    font-size: 20px;
+}
+.productPrize{
+    font-size: 16px;
+}
+.contactFooterWrap{
+    padding: 0px;
+}
+.ecSystemBtn{
+    color: #f99 !important;
+    background: #3c8dbc !important;
+    z-index: 11 !important;
+    margin-right: 5% !important;
+}
+
+
+
+
+.view-first img {
+   -webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
+.view-first .mask {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   /*background-color: rgba(219,127,8, 0.7);*/
+   background-color: rgba(000,000,000, 0.7);
+   -webkit-transition: all 0.4s ease-in-out;
+   -moz-transition: all 0.4s ease-in-out;
+   -o-transition: all 0.4s ease-in-out;
+   -ms-transition: all 0.4s ease-in-out;
+   transition: all 0.4s ease-in-out;
+   position: absolute !important;
+    margin-top: -107%;
+    padding: 26px;
+    margin-left: -6.5%;
+    min-height: 244px;
+    color: #ffffff;
+}
+.view-first h2 {
+   -webkit-transform: translateY(-100px);
+   -moz-transform: translateY(-100px);
+   -o-transform: translateY(-100px);
+   -ms-transform: translateY(-100px);
+   transform: translateY(-100px);
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+}
+.view-first p {
+   -webkit-transform: translateY(100px);
+   -moz-transform: translateY(100px);
+   -o-transform: translateY(100px);
+   -ms-transform: translateY(100px);
+   transform: translateY(100px);
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s linear;
+   -moz-transition: all 0.2s linear;
+   -o-transition: all 0.2s linear;
+   -ms-transition: all 0.2s linear;
+   transition: all 0.2s linear;
+}
+.view-first:hover img {
+   -webkit-transform: scale(1.1,1.1);
+   -moz-transform: scale(1.1,1.1);
+   -o-transform: scale(1.1,1.1);
+   -ms-transform: scale(1.1,1.1);
+   transform: scale(1.1,1.1);
+}
+.view-first a.info {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   filter: alpha(opacity=0);
+   opacity: 0;
+   -webkit-transition: all 0.2s ease-in-out;
+   -moz-transition: all 0.2s ease-in-out;
+   -o-transition: all 0.2s ease-in-out;
+   -ms-transition: all 0.2s ease-in-out;
+   transition: all 0.2s ease-in-out;
+}
+.view-first:hover .mask {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+}
+.view-first:hover h2,
+.view-first:hover p,
+.view-first:hover a.info {
+   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+   filter: alpha(opacity=100);
+   opacity: 1;
+   -webkit-transform: translateY(0px);
+   -moz-transform: translateY(0px);
+   -o-transform: translateY(0px);
+   -ms-transform: translateY(0px);
+   transform: translateY(0px);
+}
+.view-first:hover p {
+   -webkit-transition-delay: 0.1s;
+   -moz-transition-delay: 0.1s;
+   -o-transition-delay: 0.1s;
+   -ms-transition-delay: 0.1s;
+   transition-delay: 0.1s;
+}
+.view-first:hover a.info {
+   -webkit-transition-delay: 0.2s;
+   -moz-transition-delay: 0.2s;
+   -o-transition-delay: 0.2s;
+   -ms-transition-delay: 0.2s;
+   transition-delay: 0.2s;
+}
+.productBtnReadMore{
+    border-radius: 0px !important;
+    font-weight: bold;
+}
+                
+
+
+.productInformationPage{
+    margin-top: 5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    #myNavbar{
+        z-index: 1001;
+        position: absolute;
+        width: 50%;
+        background: #ffffff;
+        margin-left: 42.4%;
+    }
+    .sliderTitles{
+        margin-top: 22%;
+    }
+    .brandLogoWrap img {
+        width: 100%;
+        height: 45px;
+    }
 }
