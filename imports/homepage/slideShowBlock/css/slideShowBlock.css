@@ -18,7 +18,7 @@
 .ECSNavbar{
 	background-color: #fff!important;
 	color: #333!important;
-	border: 0px solid #fff !important;
+	border-bottom:  1px solid #eee !important;
 	border-radius: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -272,7 +272,7 @@
    transition: all 0.4s ease-in-out;
    position: absolute !important;
     margin-top: -107%;
-    padding: 26px;
+    padding: 12px;
     margin-left: -6.5%;
     min-height: 244px;
     color: #ffffff;
@@ -362,14 +362,56 @@
                 
 
 
-.productInformationPage{
+.productInformationPageWrap{
     margin-top: 5%;
 }
-
-
-
-
-
+.productWrapInwrap{
+  border: 1px solid #337ab7;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+.productWrapInwrap{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.singleProductImg{
+      height: 300px;
+}
+.productWrapInwrapTit{
+  font-size: 24px;
+  /*font-weight: bold;*/
+  color: #337ab7;
+  padding: 0px;
+}
+.ProddetailsWrap{
+    font-size: 22px;
+    color: #337ab7;
+}
+.indRupee{
+    color: #f99;
+    margin-right: 5px;
+    font-size: 19px;
+}
+.ProddetailsWrapprize{
+    text-align: center;
+    padding: 6px;
+    font-size: 20px;
+}
+.detailWrapProd{
+  padding-left: 0px;
+}
+.ProddetailsWrapmob{
+  text-align: center;
+    /*padding: 6px;*/
+    font-size: 20px;
+}
+.callusWrap{
+  font-size: 18px;
+  color: #f99;
+  margin-right: 10px;
+}
+.ProddetailsWrapshort{
+  font-size: 16px;
+}
 
 
 
@@ -392,4 +434,24 @@
         width: 100%;
         height: 45px;
     }
+    .productInformationPageWrap {
+    margin-top: 18%;
+  }
+  .productWrapInwrapTit{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .mask h2, .mask p, .mask h3{
+    display: none;
+  }
+  .view-first .mask{
+    background: transparent;
+  }
+  .productBtnReadMore{
+    display: block;
+  }
+  .productWrapInwrap {
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0,0,0,0);
+}
 }

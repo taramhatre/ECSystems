@@ -108,7 +108,7 @@ export default class TopProductsBlock extends TrackeReact(Component){
 								                        <p>{products.shortDescription}</p>
 								                        <h3>Call - 8888433075</h3>
 								                        <a href={`/productInfo/${products._id}`} className="info">
-								                        	<button className="btn btn-danger productBtnReadMore"> Read More </button>
+								                        	<button className="btn btn-danger productBtnReadMore"> Show Details </button>
 								                        </a>
 							                   		 </div>
 													<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>
