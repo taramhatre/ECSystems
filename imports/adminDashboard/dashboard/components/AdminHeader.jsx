@@ -5,9 +5,8 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 export default class AdminHeader extends TrackerReact(Component) {
 
 	handleClick(e) {
-            e.preventDefault();
-            Meteor.logout();
-            FlowRouter.go("/userlogin");
+        e.preventDefault();
+        Meteor.logout();
 	}	
 
 	render() {

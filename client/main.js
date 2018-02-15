@@ -5,3 +5,4 @@ import '/imports/homepage/slideShowBlock/css/slideShowBlock.css';
 import '/imports/adminDashboard/dashboard/css/dashboard.css';
 import '/imports/adminDashboard/products/css/products.css';
 import '/imports/adminDashboard/category/css/category.css';
+import '/imports/login/css/login.css';
