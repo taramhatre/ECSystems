@@ -8,16 +8,4 @@ import '/imports/adminDashboard/slideshow/api/tempLogoImage.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
-
-    if ( !Meteor.users.findOne({roles : 'admin'})) {
-    
-    adminId = Accounts.createUser({
-              username : 'ECSystemAdmin',
-              email    : 'ecsystem@gmail.com',
-              password : 'ecadmin@123',
-          });
-
-    Roles.addUsersToRoles(adminId, "admin");
-
-    } // Create admin
 });
