@@ -126,10 +126,13 @@
 }
 .brandLogoWrap{
 	background: #fff;
+  padding: 0px 5px 0px 5px;
+
 }
 .brandLogoWrap img{
 	width: 100%;
-    height: 85px;
+  height: 85px;
+  border: 1px solid #efefef;
 }
 .homeBrandsWrap{
 	background: #fff;
@@ -428,11 +431,12 @@
         margin-left: 42.4%;
     }
     .sliderTitles{
-        margin-top: 22%;
+        margin-top: 18%;
     }
     .brandLogoWrap img {
         width: 100%;
         height: 45px;
+        border-radius: 100%;
     }
     .productInformationPageWrap {
     margin-top: 18%;
@@ -453,5 +457,12 @@
   .productWrapInwrap {
     border: 1px solid #eee;
     box-shadow: 0 0 10px rgba(0,0,0,0);
-}
+  }
+  .productBtnReadMore {
+    border-radius: 0px !important;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 60%;
+    display: block;
+  }
 }

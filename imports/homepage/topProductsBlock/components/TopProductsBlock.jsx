@@ -51,10 +51,12 @@ export default class TopProductsBlock extends TrackeReact(Component){
 				myBizArray.push({_id, bizName});
 			}
 			Session.set('myBizArray',myBizArray);
-			console.log(myBizArray);
 			return myBizArray;
 		}
 	}
+	componentDidMount(){
+         Session.set('myBizArray',null);
+    }
 
 	render(){
 
@@ -103,12 +105,12 @@ export default class TopProductsBlock extends TrackeReact(Component){
 												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
 													<div className="productNM"> {products.productName} </div>
 													<img src={products.productImg}/>
-													<div className="col-lg-12 col-md-12 mask">
+													<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
 								                        <h2>{products.brand}</h2>
 								                        <p>{products.shortDescription}</p>
 								                        <h3>Call - 8888433075</h3>
 								                        <a href={`/productInfo/${products._id}`} className="info">
-								                        	<button className="btn btn-danger productBtnReadMore"> Show Details </button>
+								                        	<button className="btn btn-danger productBtnReadMore" data-target="modal"> Product Details </button>
 								                        </a>
 							                   		 </div>
 													<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>

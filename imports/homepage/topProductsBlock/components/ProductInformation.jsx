@@ -10,8 +10,10 @@ class ProductInformation extends TrackeReact(Component){
 	constructor(){
 		super();
 	}
+    
 
 	render(){
+
 		return(
 			<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 productInformationPageWrap">
                 <div className="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 productWrapInwrapTit">
