@@ -38,7 +38,7 @@ export default class AllServicesBlock extends TrackeReact(Component){
 												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
 							                        <h2>{services.brand}</h2>
 							                        <p>{services.shortDescription}</p>
-							                        <h3>Call - 8888433075</h3>
+							                        <h3>Call - 8275453237</h3>
 							                        <a href={`/serviceInfo/${services._id}`} className="info">
 							                        	<button className="btn btn-danger productBtnReadMore"> Service Details </button>
 							                        </a>
