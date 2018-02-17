@@ -39,6 +39,12 @@ export default class TopProductsBlock extends TrackeReact(Component){
 
 	getTextValue(event){
 		var bizValue= $('#product').val();
+		if(bizValue.length==0){
+			 $('.showHideSearchList').addClass('hideSearchList').removeClass('showSearchList');
+		}
+		if(bizValue.length>0){
+			$('.showHideSearchList').addClass('showSearchList').removeClass('hideSearchList');
+		}
 		var RegExpBuildValue = this.buildRegExp(bizValue);
 		var businessData = Products.find({$or:[{'productName': RegExpBuildValue},
 											   {'brand': RegExpBuildValue},
@@ -52,10 +58,12 @@ export default class TopProductsBlock extends TrackeReact(Component){
 			}
 			Session.set('myBizArray',myBizArray);
 			return myBizArray;
+		}else{
+			Bert.alert("Please Enter Product, brand or category","danger","growl-top-right");
 		}
 	}
 	componentDidMount(){
-         Session.set('myBizArray',null);
+         $('.showHideSearchList').addClass('hideSearchList').removeClass('showSearchList');
     }
 
 	render(){
@@ -65,20 +73,16 @@ export default class TopProductsBlock extends TrackeReact(Component){
 		if(bizArray){
 			var bizArrayLen = bizArray.length;
 			for(var i=0; i<bizArrayLen; i++){
-				var bizId = bizArray[i].bizName;
+				var bizName = bizArray[i].bizName;
 				// console.log(bizId);
 				bizNameArray.push(
-					<div className="col-lg-10 col-md-10 col-sm-10 col-xs-10 searchBizList" key={i}>
-				        <div>
-				        <ul className="searchBizUl">
-							<a href={`/product/${bizId}`}>
-								<li>
+					
+							<a href={`/product/${bizName}`} key={i}>
+								<li className="SearchproductList">
 				            		{bizArray[i].bizName}
 				           	 	</li>
 				            </a>
-				        </ul>
-				        </div>
-			        </div>
+				        
 			        )
 			}	
 		}
@@ -93,7 +97,15 @@ export default class TopProductsBlock extends TrackeReact(Component){
 					<div className="col-lg-3 col-md-3 col-sm-12 col-xs-12 search">
 					  <input type="text" placeholder="Search Products.." name="search2" id="product" onInput={this.getTextValue.bind(this)}/>
 					  <button type="submit" ><i className="fa fa-search"></i></button>
-					  <div className="searcBizLi">{bizNameArray}</div>
+					  <div className="searcBizLi">
+						  <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10 searchBizList" key={i}>
+					        <div className="showHideSearchList">
+						        <ul className="searchBizUl">
+							  		{bizNameArray}
+							  	</ul>
+					        </div>
+				          </div>
+						</div>
 					</div>
 
 					<div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">

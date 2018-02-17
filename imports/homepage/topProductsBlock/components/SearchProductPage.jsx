@@ -36,9 +36,17 @@ export default class SearchProductPage extends TrackeReact(Component){
 							return (
 									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 										<div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12 tupProdOutWrap">
-											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap">
+											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
 												<div className="productNM"> {products.productName} </div>
-												<img src={products.productImg}/>
+													<img src={products.productImg}/>
+													<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
+								                        <h2>{products.brand}</h2>
+								                        <p>{products.shortDescription}</p>
+								                        <h3>Call - 8888433075</h3>
+								                        <a href={`/productInfo/${products._id}`} className="info">
+								                        	<button className="btn btn-danger productBtnReadMore" data-target="modal"> Product Details </button>
+								                        </a>
+							                   		 </div>
 												<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {products.price}</div>
 											</div>
 										</div>

@@ -34,7 +34,7 @@ export default class ShowAllProducts extends TrackeReact(Component){
 							return (
 										<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 											<div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12 tupProdOutWrap">
-												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap showallProductSer view view-first">
+												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap allServicesImg view view-first">
 													<div className="productNM"> {products.productName} </div>
 													<img src={products.productImg}/>
 													<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">

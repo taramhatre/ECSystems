@@ -23,7 +23,67 @@ export default class ServicesBlock extends TrackeReact(Component){
 		FlowRouter.go('/services');
 	}
 
+	buildRegExp(searchText) {
+   // console.log('buildRegExp business');
+	   var words = searchText.trim().split(/[ \-\:]+/);
+
+	   var exps = _.map(words, function(word) {
+	      return "(?=.*" + word + ")";
+	   });
+
+	   var fullExp = exps.join('') + ".+";
+	   return new RegExp(fullExp, "i");
+	}
+
+	getService(event){
+		var serviceValue= $('#seviceValue').val();
+		if(serviceValue.length==0){
+			 $('.showHideSearchList').addClass('hideSearchList').removeClass('showSearchList');
+		}
+		if(serviceValue.length>0){
+			$('.showHideSearchList').addClass('showSearchList').removeClass('hideSearchList');
+		}
+		var RegExpBuildValue = this.buildRegExp(serviceValue);
+		var businessData = Services.find({$or:[{'serviceName': RegExpBuildValue},
+											   {'shortDescription': RegExpBuildValue}]}).fetch();
+		if(businessData){
+			var myServiceArray = [];
+			for(var i=0; i<businessData.length; i++){
+				var _id     = businessData[i]._id;
+				var serviceName = businessData[i].serviceName;
+				myServiceArray.push({_id, serviceName});
+			}
+			Session.set('myServiceArray',myServiceArray);
+			return myServiceArray;
+		}else{
+			Bert.alert("Please Enter Product, brand or category","danger","growl-top-right");
+		}
+	}
+
+	componentDidMount(){
+         $('.showHideSearchList').addClass('hideSearchList').removeClass('showSearchList');
+    }
+
+
 	render(){
+		var ServiceNameArray = [];
+		var ServiceArray = Session.get('myServiceArray');
+		if(ServiceArray){
+			var ServiceArrayLen = ServiceArray.length;
+			for(var i=0; i<ServiceArrayLen; i++){
+				var serviceName = ServiceArray[i].serviceName;
+				// console.log(bizId);
+				ServiceNameArray.push(
+					
+							<a href={`/service/${serviceName}`} key={i}>
+								<li className="SearchproductList">
+				            		{ServiceArray[i].serviceName}
+				           	 	</li>
+				            </a>
+				        
+			        )
+			}	
+		}
 		return(
 			<div>
 				<div className="col-lg-12
@@ -32,8 +92,17 @@ export default class ServicesBlock extends TrackeReact(Component){
 							col-xs-12 homeTopProdWrap">
 					<h4> TOP SERVICES </h4>
 					<div className="col-lg-3 col-md-3 col-xs-12 col-sm-12  search">
-					  <input type="text" placeholder="Search Services.." name="search2"/>
+					  <input type="text" placeholder="Search Services.." name="search2" id="seviceValue" onInput={this.getService.bind(this)}/>
 					  <button type="submit"><i className="fa fa-search"></i></button>
+					   <div className="searcBizLi">
+						  <div className="col-lg-10 col-md-10 col-sm-10 col-xs-10 searchBizList" key={i}>
+					        <div className="showHideSearchList">
+						        <ul className="searchBizUl">
+							  		{ServiceNameArray}
+							  	</ul>
+					        </div>
+				          </div>
+						</div>
 					</div>
 					<div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 
@@ -43,8 +112,8 @@ export default class ServicesBlock extends TrackeReact(Component){
 										<div className="col-lg-12 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
 											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
 												<div className="productNM"> {services.serviceName} </div>
-												<img src={services.serviceImg}/>
-												<div className="col-lg-12 col-md-12 mask">
+												<img src={services.serviceImg} />
+												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
 							                        <h2>{services.brand}</h2>
 							                        <p>{services.shortDescription}</p>
 							                        <h3>Call - 8888433075</h3>
@@ -62,7 +131,7 @@ export default class ServicesBlock extends TrackeReact(Component){
 
 					</div>
 					<div className="topProdShowMore col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<button className="btn btn-primary showMoreProd" onClick={this.allServices.bind(this)}>SHOW MORE</button>
+						<button className="btn btn-primary showMoreProd .productBtnReadMore" onClick={this.allServices.bind(this)}>SHOW MORE</button>
 					</div>
 				</div>
 			</div>
