@@ -48,8 +48,8 @@ export default class ServicesBlock extends TrackeReact(Component){
 							                        <h2>{services.brand}</h2>
 							                        <p>{services.shortDescription}</p>
 							                        <h3>Call - 8888433075</h3>
-							                        <a href={`/service/${services._id}`} className="info">
-							                        	<button className="btn btn-danger productBtnReadMore"> Read More </button>
+							                        <a href={`/serviceInfo/${services._id}`} className="info">
+							                        	<button className="btn btn-danger productBtnReadMore"> Service Details </button>
 							                        </a>
 							                   	</div>
 												<div className="productPrize"> <i className="fa fa-inr" aria-hidden="true"></i> {services.price}</div>
