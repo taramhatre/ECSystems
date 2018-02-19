@@ -29,6 +29,9 @@ export default class Login extends TrackerReact(Component){
 		$('.intro').css({'height': screen.height + "px"});
 	    return (
 	     <div className="intro col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	     	<div className="home col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	     		<a href="/"><i className="fa fa-home"></i></a>
+	     	</div>
 		        <div className="inner">
 		            <div className="loginwrappercontent col-lg-6 col-lg-offset-3">
 						<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 brandName">ECSystems LOGIN</div>

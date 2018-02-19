@@ -25,6 +25,7 @@ class Header extends TrackerReact(Component){
 				        <li><a href="/products">PRODUCTS</a></li>
 				        <li><a href="/services">SERVICES</a></li> 
 				        <li><a href="/contact">CONTACT</a></li> 
+				        { Roles.userIsInRole(Meteor.userId(), ['admin']) ? <li><a href="/ecsystemAdminDashboard">DASHBOARD</a></li> : '' }
 				      </ul>
 				      <ul className="nav navbar-nav navbar-right">
 				       {/*} <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>

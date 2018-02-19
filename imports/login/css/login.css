@@ -14,3 +14,13 @@
 .loginLabel{
 	color: #fff;
 }
+
+.home{
+	text-align: right;
+}
+
+.home .fa {
+	color: #fff;
+	font-size: 22px;
+	padding-top: 1%;
+}

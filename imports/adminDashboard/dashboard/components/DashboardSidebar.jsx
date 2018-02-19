@@ -27,7 +27,13 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					      <br/>
 					      
 					      <ul className="sidebar-menu">
-					        
+
+					        <li className="treeview">
+					          <a href="/">
+					            <i className="fa fa-home"></i> <span>Home</span>
+					          </a>
+					        </li>
+
 					        <li className="treeview">
 					          <a href="/adminDashboard">
 					            <i className="fa fa-dashboard"></i> <span>Dashboard</span>
