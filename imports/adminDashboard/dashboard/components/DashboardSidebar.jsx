@@ -18,7 +18,7 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 						<section className="sidebar">
 					      <div className="user-panel">
 					        <div className="pull-left image">
-					          <img src="/images/User.png" className="img-circle" alt="User Image" />
+					          <img src="../images/User.png" className="img-circle" alt="User Image" />
 					        </div>
 					        <div className="pull-left info">
 					          <p className="adminName">Admin</p>
@@ -35,7 +35,7 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					        </li>
 
 					        <li className="treeview">
-					          <a href="/adminDashboard">
+					          <a href="/ecsystemAdminDashboard">
 					            <i className="fa fa-dashboard"></i> <span>Dashboard</span>
 					          </a>
 					        </li>
@@ -115,8 +115,14 @@ export default class DashboardSidebar extends TrackerReact(Component) {
 					        </li>
 
 					        <li className="treeview">
-					          <a href="/adminDashboard">
+					          <a href="/resetPassword">
 					            <i className="fa fa-unlock-alt"></i> <span>Reset Password</span>
+					          </a>
+					        </li>
+
+					        <li className="treeview">
+					          <a href="/enquiries">
+					            <i className="fa fa-comment"></i> <span>Enquiries</span>
 					          </a>
 					        </li>
 

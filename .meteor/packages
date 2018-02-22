@@ -33,3 +33,5 @@ accounts-base
 accounts-password
 check
 alanning:roles
+dburles:google-maps
+momentjs:moment
