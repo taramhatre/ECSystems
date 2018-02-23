@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Session } from 'meteor/session';
 import GoogleMap from './lib/GoogleMap';
 
+if (Meteor.isClient) {
+  Meteor.startup(function() {
+    GoogleMaps.load({ v: '3', key: 'AIzaSyCJqwWlbj_vSx57CgmCslM-zm04VkpwSa8', libraries: 'geometry,places' });
+  });
+}
+
 class MyMap extends Component {
   constructor() {
     super();
