@@ -83,8 +83,8 @@ export default class SlideShowBlock extends TrackerReact(Component){
 					</div>
 					<CategoryPage/>
 					<TopProductsBlock/>
-					<BrandsBlock/>
 					<ServicesBlock/>
+					<BrandsBlock/>
 					<ContactUsBlockContainer/>
 				</div>
 			);

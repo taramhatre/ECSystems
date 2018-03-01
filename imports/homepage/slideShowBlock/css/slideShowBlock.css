@@ -135,7 +135,8 @@
 }
 .brandLogoWrap img{
 	width: 100%;
-  height: 85px;
+  height: 90px;
+  margin-bottom: 10px;
   border: 1px solid #efefef;
 }
 .homeBrandsWrap{
