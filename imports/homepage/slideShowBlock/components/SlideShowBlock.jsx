@@ -38,6 +38,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 								var activeStatus = 'active';
 							}else{
 								var activeStatus = '';
+								$('.hideotherDetails').css("display","none");
 							}	
 							return (
 									<li data-target="#mySlideShow" key={index} data-slide-to={index} className={activeStatus}></li>
@@ -52,6 +53,7 @@ export default class SlideShowBlock extends TrackerReact(Component){
 								var activeStatus = 'active';
 							}else{
 								var activeStatus = '';
+								$('.hideotherDetails').css("display","none");
 							}	
 							return (
 								    <div className={"item "+ activeStatus} key={index}>
@@ -60,8 +62,8 @@ export default class SlideShowBlock extends TrackerReact(Component){
 									      <div><h2> {slides.tagLine1}</h2></div>
 									      <div><h3> {slides.tagLine2}</h3></div>
 									      <div><h4> <b>{slides.tagLine3} </b></h4></div>
-									      <div><h5> <b>Cash On Delivery </b></h5></div>
-									      <div><h5> <b>Timing 10 AM TO 7 PM </b></h5></div>
+									      <div className="hideotherDetails"><h5> <b>Cash On Delivery </b></h5></div>
+									      <div className="hideotherDetails"><h5> <b>Timing 10 AM TO 7 PM </b></h5></div>
 									      <button className="btn btn-primary freeDelBtn">Free Delivery </button>
 
 								      </div>

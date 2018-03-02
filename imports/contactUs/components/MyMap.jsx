@@ -16,7 +16,7 @@ class MyMap extends Component {
 
   handleMapOptions() {
     return {
-      center: new google.maps.LatLng(18.739198, 73.683052),
+      center: new google.maps.LatLng(18.6337715,73.8034543),
       zoom: 12,
     };
   }
@@ -29,7 +29,7 @@ class MyMap extends Component {
 
           draggable             : false,
           animation             : google.maps.Animation.DROP,
-          position              : new google.maps.LatLng(18.739198, 73.683052),
+          position              : new google.maps.LatLng(18.6337715,73.8034543),
           map                   : map.instance,
           id                    : '123',
           title                 : "ECSystems",
