@@ -42,7 +42,7 @@
 .sliderTitles{
 	text-align: center;
     position: absolute;
-    margin-top: 7%;
+    margin-top: 10%;
     color: #fff;
 
 }
@@ -452,8 +452,12 @@ ul {
 .productNameAll{
   font-size: 14px !important;
 }
-
-
+.hideSlidDetails{
+  display: none;
+}
+.myFontSize{
+  font-size: 14px !important; 
+}
 @media only screen and (max-width: 768px) {
     #myNavbar{
         z-index: 1001;
@@ -462,8 +466,11 @@ ul {
         background: #ffffff;
         margin-left: 42.4%;
     }
-    .sliderTitles{
-        margin-top: 18%;
+    .myFontSize{
+        margin-top: 25%;
+    }
+    .fontSizeText{
+     font-size: 14px !important;
     }
     .brandLogoWrap img {
         width: 100%;
@@ -496,5 +503,8 @@ ul {
     margin: auto;
     margin-top: 60%;
     display: block;
+  }
+  .hideSlidDetails{
+    display: none;
   }
 }

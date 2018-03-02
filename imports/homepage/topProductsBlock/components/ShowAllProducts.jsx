@@ -37,9 +37,9 @@ export default class ShowAllProducts extends TrackeReact(Component){
 							var Productlen = productName.length;
 							var SDlen      = shortDescription.length;
 							var brandlen   = brand.length;
-							if(Productlen >6){
-								var productName = jQuery.trim(productName).substring(0, 18)+ "...";
-								// $('.productNM').addClass('productNameAll'); 
+							if(Productlen >=22){
+								// var productName = jQuery.trim(productName).substring(0, 18)+ "...";
+								var fontSizeText = 'myFontSize';
 							}
 							if(SDlen >80){
 								shortDescription = jQuery.trim(shortDescription).substring(0, 75)+ "...";
