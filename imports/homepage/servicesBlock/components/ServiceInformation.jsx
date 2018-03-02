@@ -27,7 +27,7 @@ class ServiceInformation extends TrackeReact(Component){
                            <i className="fa fa-inr indRupee"></i> {this.props.ServiceData.price} /-
                         </div>
                         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 ProddetailsWrapmob">
-                           <span className="callusWrap"> Call Us - </span> +91 8888433075
+                           <span className="callusWrap"> Call Us - </span> +91 7030743237
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 detailWrapProd">

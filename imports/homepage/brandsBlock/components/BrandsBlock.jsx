@@ -26,19 +26,19 @@ export default class BrandsBlock extends TrackeReact(Component){
 								col-sm-12
 								col-xs-12 homeBrandsWrap homeTopProdWrap">
 						<h4> OUR BRANDS </h4>
+						<div  className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 						{ this.showBrands().map( (brands,index)=>{
 							return (	
-										<div key={index} className="col-lg-1 col-md-1 col-sm-2 col-xs-2 brandLogoWrap">
-											<img src={brands.brandImg}/>
-										</div>
-										/*<div key={index} className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
-											<div className="col-lg-1 col-md-1 col-sm-2 col-xs-2 brandLogoWrap">
+										
+										
+											<div key={index} className="col-lg-1 col-md-1 col-sm-2 col-xs-2 brandLogoWrap">
 												<img src={brands.brandImg}/>
 											</div>
-										</div>*/
+										
 								);
 						  }) 
 						}
+						</div>
 				</div>
 			</div>
 		);

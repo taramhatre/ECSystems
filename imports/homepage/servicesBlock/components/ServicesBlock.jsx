@@ -107,16 +107,24 @@ export default class ServicesBlock extends TrackeReact(Component){
 					<div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 
 						{ this.showTopServices().map( (services,index)=>{
+							var serviceName = services.serviceName;
+							var shortDescription = services.shortDescription;
+							if(serviceName.lenght>20){
+								var serviceName = jQuery.trim(serviceName).substring(0, 19) + "...";
+							}
+							if(shortDescription.length>80){
+								shortDescription = jQuery.trim(shortDescription).substring(0, 75) + "...";
+							}
 							return (
 									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 										<div className="col-lg-12 col-md-3 col-sm-12 col-xs-12 tupProdOutWrap">
 											<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap view view-first">
-												<div className="productNM"> {services.serviceName} </div>
+												<div className="productNM"> {serviceName} </div>
 												<img src={services.serviceImg} />
 												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
 							                        <h2>{services.brand}</h2>
-							                        <p>{services.shortDescription}</p>
-							                        <h3>Call - 8275453237</h3>
+							                        <p>{shortDescription}</p>
+							                        <h3>Call - 7030743237</h3>
 							                        <a href={`/serviceInfo/${services._id}`} className="info">
 							                        	<button className="btn btn-danger productBtnReadMore"> Service Details </button>
 							                        </a>
