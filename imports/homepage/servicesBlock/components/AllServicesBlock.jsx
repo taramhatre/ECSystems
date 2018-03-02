@@ -29,12 +29,14 @@ export default class AllServicesBlock extends TrackeReact(Component){
 					<div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 
 						{ this.showAllServices().map( (services,index)=>{
-							var serviceName = services.serviceName;
+							var serviceName      = services.serviceName;
 							var shortDescription = services.shortDescription;
-							if(serviceName.lenght>20){
+							var serNM            = serviceName.lenght;
+							var SDNM             = shortDescription.length;
+							if(serNM>20){
 								var serviceName = jQuery.trim(serviceName).substring(0, 19) + "...";
 							}
-							if(shortDescription.length>80){
+							if(SDNM>80){
 								shortDescription = jQuery.trim(shortDescription).substring(0, 75) + "...";
 							}
 							return (

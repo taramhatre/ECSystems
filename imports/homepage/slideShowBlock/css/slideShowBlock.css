@@ -441,8 +441,13 @@ ul {
   list-style-type: none;
   padding: 0px;
 }
-
-
+.brandName{
+  font-size: 16px !important; 
+    color: #f55 !important;
+}
+.brandnameTit{
+   color: #f55 !important;
+}
 
 
 

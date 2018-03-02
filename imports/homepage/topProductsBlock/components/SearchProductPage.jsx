@@ -33,13 +33,20 @@ export default class SearchProductPage extends TrackeReact(Component){
 					<div className="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
 
 						{ this.showAllProducts().map( (products,index)=>{
-							var productName = products.productName;
+							var productName      = products.productName;
 							var shortDescription = products.shortDescription;
-							if(productName.lenght>22){
-								var productName = jQuery.trim(productName).substring(0, 19)+ "...";
+							var brand            = products.brand;
+							var Productlen = productName.length;
+							var SDlen      = shortDescription.length;
+							var brandlen   = brand.length;
+							if(Productlen >22){
+								var productName = jQuery.trim(productName).substring(0, 18)+ "...";
 							}
-							if(shortDescription.length>80){
+							if(SDlen >80){
 								shortDescription = jQuery.trim(shortDescription).substring(0, 75)+ "...";
+							}
+							if(brandlen>15){
+								$('.brandnameTit').addClass('brandName'); 
 							}
 							return (
 									<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -48,7 +55,7 @@ export default class SearchProductPage extends TrackeReact(Component){
 												<div className="productNM"> {productName} </div>
 													<img src={products.productImg}/>
 													<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
-								                        <h2>{products.brand}</h2>
+								                        <h3 className="brandnameTit">{brand}</h3>
 								                        <p>{shortDescription}</p>
 								                        <h3>Call - 7030743237</h3>
 								                        <a href={`/productInfo/${products._id}`} className="info">
