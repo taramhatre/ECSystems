@@ -37,7 +37,7 @@ export default class ShowAllProducts extends TrackeReact(Component){
 							var Productlen = productName.length;
 							var SDlen      = shortDescription.length;
 							var brandlen   = brand.length;
-							if(Productlen >=22){
+							if(Productlen >22){
 								// var productName = jQuery.trim(productName).substring(0, 18)+ "...";
 								var fontSizeText = 'myFontSize';
 							}
@@ -51,7 +51,7 @@ export default class ShowAllProducts extends TrackeReact(Component){
 										<div key = {index} className="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 											<div  className="col-lg-12 col-md-12 col-sm-12 col-xs-12 tupProdOutWrap">
 												<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 topProductWrap allServicesImg view view-first">
-													<div className="productNM"> {productName} </div>
+													<div className={"productNM "+ fontSizeText}> {productName} </div>
 													<img src={products.productImg}/>
 													<div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mask">
 								                        <h3 className="brandnameTit">{brand}</h3>
