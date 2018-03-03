@@ -23,7 +23,7 @@ export default class ServicesBlock extends TrackeReact(Component){
 		FlowRouter.go('/services');
 	}
 
-	buildRegExp(searchText) {
+	buildRegExpSer(searchText) {
    // console.log('buildRegExp business');
 	   var words = searchText.trim().split(/[ \-\:]+/);
 
@@ -43,7 +43,7 @@ export default class ServicesBlock extends TrackeReact(Component){
 		if(serviceValue.length>0){
 			$('.showHideSearchList').addClass('showSearchList').removeClass('hideSearchList');
 		}
-		var RegExpBuildValue = this.buildRegExp(serviceValue);
+		var RegExpBuildValue = this.buildRegExpSer(serviceValue);
 		var businessData = Services.find({$or:[{'serviceName': RegExpBuildValue},
 											   {'shortDescription': RegExpBuildValue}]}).fetch();
 		if(businessData){
@@ -53,8 +53,15 @@ export default class ServicesBlock extends TrackeReact(Component){
 				var serviceName = businessData[i].serviceName;
 				myServiceArray.push({_id, serviceName});
 			}
-			Session.set('myServiceArray',myServiceArray);
-			return myServiceArray;
+			var serviceArray  = _.pluck(myServiceArray,"serviceName");
+			var uniqServiceNM = _.uniq(serviceArray);
+			var uniqServicesArray = [];
+			for(var j=0; j<uniqServiceNM.length;j++){
+				var serviceNM = uniqServiceNM[j];
+				uniqServicesArray.push(serviceNM);
+			}
+			Session.set('myServiceArray',uniqServicesArray);
+			return uniqServicesArray;
 		}else{
 			Bert.alert("Please Enter Product, brand or category","danger","growl-top-right");
 		}
@@ -71,13 +78,13 @@ export default class ServicesBlock extends TrackeReact(Component){
 		if(ServiceArray){
 			var ServiceArrayLen = ServiceArray.length;
 			for(var i=0; i<ServiceArrayLen; i++){
-				var serviceName = ServiceArray[i].serviceName;
+				var serviceName = ServiceArray[i];
 				// console.log(bizId);
 				ServiceNameArray.push(
 					
 							<a href={`/service/${serviceName}`} key={i}>
 								<li className="SearchproductList">
-				            		{ServiceArray[i].serviceName}
+				            		{ServiceArray[i]}
 				           	 	</li>
 				            </a>
 				        

@@ -56,8 +56,19 @@ export default class TopProductsBlock extends TrackeReact(Component){
 				var bizName = businessData[i].category;
 				myBizArray.push({_id, bizName});
 			}
-			Session.set('myBizArray',myBizArray);
-			return myBizArray;
+			var productCategory = _.pluck(myBizArray,"bizName");
+			var prodCatArray    = _.uniq(productCategory);
+			console.log(prodCatArray);
+			var topProdCatArray = [];
+			for(var j=0; j<prodCatArray.length;j++){
+				var categoryNM = prodCatArray[j];
+				topProdCatArray.push(
+					categoryNM
+				);
+			} 
+			console.log("my top araay",topProdCatArray);
+			Session.set('myBizArray',topProdCatArray);
+			return topProdCatArray;
 		}else{
 			Bert.alert("Please Enter Product, brand or category","danger","growl-top-right");
 		}
@@ -70,16 +81,18 @@ export default class TopProductsBlock extends TrackeReact(Component){
 
 		var bizNameArray = [];
 		var bizArray = Session.get('myBizArray');
+		console.log("myArray",bizArray);
 		if(bizArray){
 			var bizArrayLen = bizArray.length;
+			console.log("length",bizArrayLen);
 			for(var i=0; i<bizArrayLen; i++){
-				var bizName = bizArray[i].bizName;
-				// console.log(bizId);
+				var bizName = bizArray[i];
+				console.log("vikas",bizName);
 				bizNameArray.push(
 					
 							<a href={`/product/${bizName}`} key={i}>
 								<li className="SearchproductList">
-				            		{bizArray[i].bizName}
+				            		{bizArray[i]}
 				           	 	</li>
 				            </a>
 				        
